@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hours_project_form_view" model="ir.ui.view">
+        <field name="name">hours.project.project.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <label for="hours_available"/>
+                <div>
+                    <field name="hours_available"/>
+                    <div class="oe_grey">
+                        <field name="hours_worked" class="oe_inline"/> Consumed Hours
+                    </div>
+                </div>
+            </field>
+        </field>
+    </record>
+
+     <record id="hours_project_kanban_view" model="ir.ui.view">
+        <field name="name">hours.project.project.kanban</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_kanban"/>
+        <field name="arch" type="xml">
+            <field name="is_favorite" position="after">
+                <field name="hours_available"/>
+                <field name="hours_worked"/>
+            </field>
+
+            <xpath expr="//div[@t-if='record.alias_name.value and record.alias_domain.value']" position="after">
+                <t t-if="record.hours_worked.raw_value gt record.hours_available.raw_value">
+                    <div style="color: #E00000; margin-top: 5%; text-align: center;">
+                        <span>
+                            <i class="fa fa-clock-o"></i>
+                            <t t-esc="record.hours_worked.value"/>
+                            /
+                            <t t-esc="record.hours_available.value"/> Hour(s)
+                        </span>
+                    </div>
+                </t>
+
+                <t t-if="record.hours_worked.raw_value lt record.hours_available.raw_value">
+                    <div style="color: #828282; margin-top: 5%; text-align: center;">
+                        <span>
+                            <i class="fa fa-clock-o"></i>
+                            <t t-esc="record.hours_worked.value"/>
+                            /
+                            <t t-esc="record.hours_available.value"/> Hour(s)
+                        </span>
+                    </div>
+                </t>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
