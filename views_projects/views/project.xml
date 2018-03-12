@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- pivot -->
+
+    <record id="view_project_project_pivot" model="ir.ui.view">
+        <field name="name">project.project.pivot</field>
+        <field name="model">project.project</field>
+        <field name="arch" type="xml">
+            <pivot string="Project">
+                <field name="name" type="row"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Timeline -->
+    <record id="project_task_timeline" model="ir.ui.view">
+        <field name="model">project.project</field>
+        <field name="type">timeline</field>
+        <field name="arch" type="xml">
+            <timeline date_start="date_start"
+                      date_stop="date_end_project"
+                      event_open_popup="true"
+                      default_group_by="user_id"
+                      colors="#ec7063: user_id == false;"
+            />
+        </field>
+    </record>
+
+
+    <!-- Calendar -->
+
+    <record id="view_project_calendar" model="ir.ui.view">
+        <field name="name">project.project.calendar</field>
+        <field name="model">project.project</field>
+        <field name="arch" type="xml">
+            <calendar color="user_id" date_start="date_end_project_date" string="Projects" mode="month">
+                <field name="name"/>
+            </calendar>
+        </field>
+    </record>
+
+    <!-- Kanban -->
+    <record id="bis_view_project_kanban" model="ir.ui.view">
+        <field name="name">bis.view.project.kanban</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_kanban"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="priority"/>
+            </field>
+            <div class="o_kanban_primary_left" position="inside">
+                <div class="o_left">
+                    <div class="pull-left" style="display: inline-block;">
+                        <!--
+                        El problema esta en el display-block que esta puesto como block y se debe de
+                        quitar por el display-block
+                        -->
+                        Priority<field name="priority" widget="priority" style="display: inline-block;"/>
+
+                    </div>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="bis_edit_project" model="ir.ui.view">
+        <field name="name">bis.project.project.form.inherit</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project_task_default_stage.edit_project"/>
+        <field name="arch" type="xml">
+            <field name="resource_calendar_id" position="after">
+                <field name="date_start"/>
+                <field name="date_end_project"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Herencia de Actions -->
+    <record id="project.open_view_project_all" model="ir.actions.act_window">
+        <field name="view_mode">kanban,form,tree,calendar,timeline,pivot</field>
+    </record>
+</odoo>
