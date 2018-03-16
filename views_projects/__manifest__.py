@@ -12,7 +12,6 @@
                 'project',
                 'project_task_default_stage',
                 'project_task_add_very_high',
-                'project_department',
                 'project_timeline',
                 'web_timeline',
                 ],
