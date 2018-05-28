@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="project_task_timer_counter_form_view" model="ir.ui.view">
+            <field name="name">project.task.timer.counter.form.view</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@class='oe_right']" position="inside">
+                    <field name="task_timer_started" invisible="1"/>
+                    <button class="oe_inline oe_stat_button" name="start_task_timer" type="object" icon="fa-play" string="Iniciar contador" attrs="{'invisible': [('task_timer_started', '=', True)]}" />
+                    <button class="oe_inline oe_stat_button" name="stop_task_timer" type="object" icon="fa-stop" string="Parar contador" attrs="{'invisible': [('task_timer_started', '=', False)]}" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
