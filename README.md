@@ -14,6 +14,7 @@ addon | version | summary
 [project_stage_validator](project_stage_validator/) | 10.0.1.0.0 | Possibility to add a validator on the different stages of a project
 [views_projects](views_projects/) | 10.0.1.0.0 | Add views to projects
 [qu_project_code](qu_project_code/) | 10.0.1.0.0 | Add a sequence to projects
+[recurring_projects_tasks](recurring_projects_tasks/) | 10.0.1.0.0 | Create projects and tasks template and recurrents
 
 
 [//]: # (end addons)
