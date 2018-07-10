@@ -128,7 +128,12 @@ class ProjectTask(models.Model):
             fecha_sumar = intervalo
             while fecha_calculada <= datendtas:
                 new_task = task.copy()
+                name_split = '(copy)'
+                if '(copia)' in new_task.name:
+                    name_split = '(copia)'
                 new_task.write({
+                    'name': new_task.name.split(name_split)[0] +
+                    str(fecha_calculada),
                     'b_duplicate': False,
                     'date_duplicate': False,
                     'rate_duplicate': False,

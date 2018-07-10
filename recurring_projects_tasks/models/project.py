@@ -122,7 +122,12 @@ class ProjectProject(models.Model):
                     type_rate_cron=project.rate_duplicate
                 )
                 new_project = project.copy()
+                name_split = '(copy)'
+                if '(copia)' in new_project.name:
+                    name_split = '(copia)'
                 new_project.write({
+                    'name': new_project.name.split(name_split)[0] +
+                    str(fecha_calculada),
                     'b_duplicate': False,
                     'date_duplicate': False,
                     'rate_duplicate': False,
