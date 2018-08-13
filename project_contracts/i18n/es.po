@@ -1,0 +1,473 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_contracts
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-08-10 13:39+0000\n"
+"PO-Revision-Date: 2018-08-10 15:50+0100\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 1.7.4\n"
+
+#. module: project_contracts
+#: model:mail.template,body_html:project_contracts.project_contract_cron_email_template
+msgid ""
+"\n"
+"Hello ${object.name},\n"
+"<br/><br/>\n"
+"    <h2>The following contracts expired: </h2>\n"
+"<br/><br/>\n"
+"<table cellspacing=\"1\" border=\"1\" cellpadding=\"4\">\n"
+"    <tr>\n"
+"        <th>Customer</th>\n"
+"        <th>Contract</th>\n"
+"        <th>Dates</th>\n"
+"        <th>Prepaid Units</th>\n"
+"        <th>Contact</th>\n"
+"    </tr>\n"
+"    % for contract in object.project_contracts_ids:\n"
+"        <tr>\n"
+"            <td>${contract.partner_id.name}</td>\n"
+"            <td><a href=\"${ctx[\"base_url\"]}/web#id=${contract.id}&view_type=form&model=project.contract&action=${ctx[\"action_id\"]}&menu_id=${ctx[\"menu_id\"]}\">${contract.name}</a></td>\n"
+"            <td>${contract.date_start} to ${contract.date_end or '-'}</td>\n"
+"            <td>\n"
+"            % if contract.quantity_max != 0.0:\n"
+"                ${'{:,.2f}'.format(contract.remaining_hours)}/${'{:,.2f}'.format(contract.quantity_max)} units\n"
+"            % endif\n"
+"            </td>\n"
+"            <td>${contract.partner_id.phone or ''}, ${contract.partner_id.email or ''}</td>\n"
+"        </tr>\n"
+"    % endfor\n"
+"</table>\n"
+"\n"
+"<p>\n"
+"    You can check all contracts to be renewed using the menu:\n"
+"</p>\n"
+"<ul>\n"
+"    <li>Project / Contracts / Contracts</li>\n"
+"</ul>\n"
+"<p>\n"
+"    Thanks,\n"
+"</p>\n"
+"\n"
+"<pre>\n"
+"--\n"
+"Odoo Automatic Email\n"
+"</pre>\n"
+"            "
+msgstr ""
+"\n"
+"Hola ${object.name},\n"
+"<br/><br/>\n"
+"    <h2>Los siguientes contratos han expirado: </h2>\n"
+"<br/><br/>\n"
+"<table cellspacing=\"1\" border=\"1\" cellpadding=\"4\">\n"
+"    <tr>\n"
+"        <th>Cliente</th>\n"
+"        <th>Contrato</th>\n"
+"        <th>Fechas</th>\n"
+"        <th>Unidades de prepago</th>\n"
+"        <th>Contacto</th>\n"
+"    </tr>\n"
+"    % for contract in object.project_contracts_ids:\n"
+"        <tr>\n"
+"            <td>${contract.partner_id.name}</td>\n"
+"            <td><a href=\"${ctx[\"base_url\"]}/web#id=${contract.id}&view_type=form&model=project.contract&action=${ctx[\"action_id\"]}&menu_id=${ctx[\"menu_id\"]}\">${contract.name}</a></td>\n"
+"            <td>${contract.date_start} to ${contract.date_end or '-'}</td>\n"
+"            <td>\n"
+"            % if contract.quantity_max != 0.0:\n"
+"                ${'{:,.2f}'.format(contract.remaining_hours)}/${'{:,.2f}'.format(contract.quantity_max)} units\n"
+"            % endif\n"
+"            </td>\n"
+"            <td>${contract.partner_id.phone or ''}, ${contract.partner_id.email or ''}</td>\n"
+"        </tr>\n"
+"    % endfor\n"
+"</table>\n"
+"\n"
+"<p>\n"
+"    Usted puede revisar todos los contratos pendientes usando el punto de menú:\n"
+"</p>\n"
+"<ul>\n"
+"    <li>Proyecto / Contratos / Contratos</li>\n"
+"</ul>\n"
+"<p>\n"
+"    Gracias,\n"
+"</p>\n"
+"\n"
+"<pre>\n"
+"--\n"
+"Odoo Automatic Email\n"
+"</pre>\n"
+"            "
+
+#. module: project_contracts
+#: model:ir.ui.view,arch_db:project_contracts.view_search_project_contract
+msgid "Account Manager"
+msgstr "Gestor contable"
+
+#. module: project_contracts
+#: model:ir.actions.act_window,name:project_contracts.act_hr_timesheet_line_by_project_contract
+msgid "Activities contract"
+msgstr "Imputaciones sobre contratos"
+
+#. module: project_contracts
+#: model:ir.model,name:project_contracts.model_account_analytic_line
+msgid "Analytic Line"
+msgstr "Línea analítica"
+
+#. module: project_contracts
+#: code:addons/project_contracts/models/project_contract.py:76
+#: model:ir.model.fields,help:project_contracts.field_project_contract_attachment_ids
+#, python-format
+msgid "Attachment that don't come from message."
+msgstr "Adjunto que no procede de un mensaje."
+
+#. module: project_contracts
+#: code:addons/project_contracts/models/account_analytic_line.py:31
+#, python-format
+msgid "Can't create the line, please renew the contract."
+msgstr "No se puede crear la línea, por favor, renueve el contrato."
+
+#. module: project_contracts
+#: model:ir.ui.view,arch_db:project_contracts.view_form_project_contract
+msgid "Cancelar contrato"
+msgstr "Cancelar contrato"
+
+#. module: project_contracts
+#: code:addons/project_contracts/models/project_contract.py:82
+#: model:ir.ui.view,arch_db:project_contracts.view_search_project_contract
+#: selection:project.contract,state:0
+#, python-format
+msgid "Cancelled"
+msgstr "Cancelada"
+
+#. module: project_contracts
+#: model:ir.ui.view,arch_db:project_contracts.view_search_project_contract
+msgid "Cancelled contracts"
+msgstr "Contratos cancelados"
+
+#. module: project_contracts
+#: code:addons/project_contracts/models/account_analytic_line.py:22
+#: model:ir.model.fields,field_description:project_contracts.field_account_analytic_line_contract_hours
+#, python-format
+msgid "Category Hours"
+msgstr "Categoría horas"
+
+#. module: project_contracts
+#: code:addons/project_contracts/models/product_category.py:15
+#, python-format
+msgid "Category of product for the maximum hours to contracts."
+msgstr "Categoría del producto para el máximo de horas de contratos."
+
+#. module: project_contracts
+#: model:ir.ui.view,arch_db:project_contracts.view_form_project_contract
+msgid "Cerrar contrato"
+msgstr "Cerrar contrato"
+
+#. module: project_contracts
+#: model:ir.actions.act_window,help:project_contracts.action_project_contracts
+msgid "Click to add a Contract."
+msgstr "Haga click aquí para agregar nuevos contratos."
+
+#. module: project_contracts
+#: model:ir.actions.act_window,help:project_contracts.act_hr_timesheet_line_by_project_contract
+msgid "Click to record activities."
+msgstr "Haga clic para registrar las actividades."
+
+#. module: project_contracts
+#: code:addons/project_contracts/models/project_contract.py:81
+#: model:ir.ui.view,arch_db:project_contracts.view_search_project_contract
+#: selection:project.contract,state:0
+#, python-format
+msgid "Closed"
+msgstr "Cerrado"
+
+#. module: project_contracts
+#: model:ir.ui.view,arch_db:project_contracts.view_search_project_contract
+msgid "Closed contracts"
+msgstr "Contratos cerrados"
+
+#. module: project_contracts
+#: code:addons/project_contracts/models/project_contract.py:70
+#: model:ir.model.fields,field_description:project_contracts.field_project_contract_company_id
+#, python-format
+msgid "Company"
+msgstr "Compañía"
+
+#. module: project_contracts
+#: code:addons/project_contracts/models/account_analytic_line.py:17
+#: code:addons/project_contracts/models/project.py:14
+#: model:ir.model.fields,field_description:project_contracts.field_account_analytic_line_contract_id
+#: model:ir.model.fields,field_description:project_contracts.field_project_project_contract_id
+#: model:ir.ui.view,arch_db:project_contracts.view_tree_project_contract
+#, python-format
+msgid "Contract"
+msgstr "Contrato"
+
+#. module: project_contracts
+#: code:addons/project_contracts/models/product_category.py:13
+#: model:ir.model.fields,field_description:project_contracts.field_product_category_contract_hours
+#, python-format
+msgid "Contract Hours"
+msgstr "Contrato horas"
+
+#. module: project_contracts
+#: code:addons/project_contracts/models/project_contract.py:15
+#: model:ir.model.fields,field_description:project_contracts.field_project_contract_name
+#: model:ir.ui.view,arch_db:project_contracts.view_form_project_contract
+#, python-format
+msgid "Contract Name"
+msgstr "Nombre de contrato"
+
+#. module: project_contracts
+#: model:ir.actions.act_window,name:project_contracts.action_project_contracts
+#: model:ir.ui.menu,name:project_contracts.menu_project_contracts
+#: model:ir.ui.menu,name:project_contracts.submenu_project_contracts
+#: model:ir.ui.view,arch_db:project_contracts.product_category_contracts_form
+#: model:ir.ui.view,arch_db:project_contracts.view_search_project_contract
+msgid "Contracts"
+msgstr "Contratos"
+
+#. module: project_contracts
+#: model:ir.ui.view,arch_db:project_contracts.view_search_project_contract
+msgid "Contracts in progress"
+msgstr "Contratos en progreso"
+
+#. module: project_contracts
+#: model:ir.model.fields,field_description:project_contracts.field_project_contract_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: project_contracts
+#: model:ir.model.fields,field_description:project_contracts.field_project_contract_create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: project_contracts
+#: code:addons/project_contracts/models/project_contract.py:21
+#: model:ir.model.fields,field_description:project_contracts.field_project_contract_partner_id
+#, python-format
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: project_contracts
+#: code:addons/project_contracts/models/project_contract.py:48
+#: model:ir.model.fields,field_description:project_contracts.field_project_contract_date_end
+#, python-format
+msgid "Date End"
+msgstr "Fecha final"
+
+#. module: project_contracts
+#: code:addons/project_contracts/models/project_contract.py:44
+#: model:ir.model.fields,field_description:project_contracts.field_project_contract_date_start
+#, python-format
+msgid "Date Start"
+msgstr "Fecha inicial"
+
+#. module: project_contracts
+#: model:ir.model.fields,field_description:project_contracts.field_project_contract_display_name
+msgid "Display Name"
+msgstr "Mostrar Nombre"
+
+#. module: project_contracts
+#: model:ir.ui.view,arch_db:project_contracts.view_form_project_contract
+msgid "Establecer a 'En progreso'"
+msgstr "Establecer a 'En progreso'"
+
+#. module: project_contracts
+#: model:ir.ui.view,arch_db:project_contracts.view_search_project_contract
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: project_contracts
+#: code:addons/project_contracts/models/project_contract.py:57
+#: model:ir.model.fields,field_description:project_contracts.field_project_contract_hours_quantity
+#, python-format
+msgid "Hours consumed"
+msgstr "Horas consumidas"
+
+#. module: project_contracts
+#: code:addons/project_contracts/models/project_contract.py:62
+#: model:ir.model.fields,field_description:project_contracts.field_project_contract_remaining_hours
+#, python-format
+msgid "Hours left"
+msgstr "Horas restantes"
+
+#. module: project_contracts
+#: model:ir.model.fields,field_description:project_contracts.field_project_contract_id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_contracts
+#: code:addons/project_contracts/models/project_contract.py:79
+#: model:ir.ui.view,arch_db:project_contracts.view_search_project_contract
+#: selection:project.contract,state:0
+#, python-format
+msgid "In Progress"
+msgstr "En proceso"
+
+#. module: project_contracts
+#: model:ir.model.fields,field_description:project_contracts.field_project_contract___last_update
+msgid "Last Modified on"
+msgstr "Ultima modificación en"
+
+#. module: project_contracts
+#: model:ir.model.fields,field_description:project_contracts.field_project_contract_write_uid
+msgid "Last Updated by"
+msgstr "Última actualización de"
+
+#. module: project_contracts
+#: model:ir.model.fields,field_description:project_contracts.field_project_contract_write_date
+msgid "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: project_contracts
+#: code:addons/project_contracts/models/project_contract.py:75
+#: model:ir.model.fields,field_description:project_contracts.field_project_contract_attachment_ids
+#, python-format
+msgid "Main Attachments"
+msgstr "Archivos adjuntos"
+
+#. module: project_contracts
+#: code:addons/project_contracts/models/project_contract.py:34
+#: model:ir.model.fields,field_description:project_contracts.field_project_contract_manager_id
+#, python-format
+msgid "Manager"
+msgstr "Gerente"
+
+#. module: project_contracts
+#: code:addons/project_contracts/models/project_contract.py:54
+#: model:ir.model.fields,help:project_contracts.field_project_contract_quantity_max
+#, python-format
+msgid "Maximum time to work on the project."
+msgstr "Tiempo máximo para trabajar en el proyecto."
+
+#. module: project_contracts
+#: model:ir.ui.view,arch_db:project_contracts.view_form_project_contract
+msgid "Para renovar"
+msgstr "Para renovar"
+
+#. module: project_contracts
+#: model:ir.ui.view,arch_db:project_contracts.view_search_project_contract
+msgid "Partner"
+msgstr "Empresa"
+
+#. module: project_contracts
+#: model:ir.ui.view,arch_db:project_contracts.view_search_project_contract
+msgid "Pending contracts"
+msgstr "Contratos pendientes"
+
+#. module: project_contracts
+#: model:ir.model,name:project_contracts.model_product_category
+msgid "Product Category"
+msgstr "Categoría de producto"
+
+#. module: project_contracts
+#: model:ir.model,name:project_contracts.model_project_project
+msgid "Project"
+msgstr "Proyecto"
+
+#. module: project_contracts
+#: model:ir.actions.server,name:project_contracts.project_contract_cron_ir_actions_server
+#: model:ir.cron,cron_name:project_contracts.project_contract_cron
+#: model:ir.cron,name:project_contracts.project_contract_cron
+msgid "Project Contract: Review state"
+msgstr "Project Contract: Review state"
+
+#. module: project_contracts
+#: code:addons/project_contracts/models/res_users.py:15
+#: model:ir.model,name:project_contracts.model_project_contract
+#: model:ir.model.fields,field_description:project_contracts.field_res_users_project_contracts_ids
+#, python-format
+msgid "Project Contracts"
+msgstr "Contratos de proyectos"
+
+#. module: project_contracts
+#: model:mail.template,subject:project_contracts.project_contract_cron_email_template
+msgid "Project contract expiration reminder ${user.company_id.name}"
+msgstr "Recordatorio de vencimiento del contrato del proyecto ${user.company_id.name}"
+
+#. module: project_contracts
+#: code:addons/project_contracts/models/project_contract.py:29
+#: model:ir.model.fields,field_description:project_contracts.field_project_contract_project_ids
+#: model:ir.ui.view,arch_db:project_contracts.view_form_project_contract
+#, python-format
+msgid "Projects"
+msgstr "Proyectos"
+
+#. module: project_contracts
+#: code:addons/project_contracts/models/project_contract.py:65
+#: model:ir.model.fields,help:project_contracts.field_project_contract_remaining_hours
+#, python-format
+msgid "Quantity_max - Hours_quantity"
+msgstr "Quantity_max - Hours_quantity"
+
+#. module: project_contracts
+#: code:addons/project_contracts/models/project_contract.py:39
+#: model:ir.model.fields,field_description:project_contracts.field_project_contract_reference
+#, python-format
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: project_contracts
+#: model:ir.ui.view,arch_db:project_contracts.view_search_project_contract
+msgid "Start Month"
+msgstr "Mes de inicio"
+
+#. module: project_contracts
+#: model:ir.model.fields,field_description:project_contracts.field_project_contract_state
+#: model:ir.ui.view,arch_db:project_contracts.view_search_project_contract
+msgid "Status"
+msgstr "Estado"
+
+#. module: project_contracts
+#: model:ir.ui.view,arch_db:project_contracts.view_form_project_contract
+msgid "Task Stage"
+msgstr "Etapa de la tarea"
+
+#. module: project_contracts
+#: model:ir.ui.view,arch_db:project_contracts.view_form_project_contract
+msgid "Timesheets"
+msgstr "Partes de horas"
+
+#. module: project_contracts
+#: model:ir.ui.view,arch_db:project_contracts.view_search_project_contract
+msgid "To Renew"
+msgstr "Para renovar"
+
+#. module: project_contracts
+#: code:addons/project_contracts/models/project_contract.py:80
+#: selection:project.contract,state:0
+#, python-format
+msgid "To renew"
+msgstr "Para renovar"
+
+#. module: project_contracts
+#: code:addons/project_contracts/models/project_contract.py:51
+#: model:ir.model.fields,field_description:project_contracts.field_project_contract_quantity_max
+#, python-format
+msgid "Unit prepayment"
+msgstr "Prepago de la unidad"
+
+#. module: project_contracts
+#: model:ir.model,name:project_contracts.model_res_users
+msgid "Users"
+msgstr "Usuarios"
+
+#. module: project_contracts
+#: model:ir.actions.act_window,help:project_contracts.act_hr_timesheet_line_by_project_contract
+msgid ""
+"You can register and track your workings hours by project every\n"
+"            day. Every time spent on a project will become a cost and can be re-invoiced to\n"
+"            customers if required."
+msgstr ""
+"Puede registrar y rastrear sus horas de funcionamiento por día de every\n"
+" de proyecto. Cada vez que gasta en un proyecto se convertirá en un costo y puede ser renovadas facturado a clientes si es necesario."
