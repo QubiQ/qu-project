@@ -29,8 +29,8 @@ Usage
 #.To increase the maximum hours of a contract, you must make a sale / invoice to the customer of the contract with a product of the category where the check 'Contract hours' has been placed.
 
 
-Gestión de errores
-==================
+Error management
+================
 
 Los errores/fallos se gestionan en `las incidencias de GitHub <https://github.com/QubiQ/qu-project/issues>`_.
 En caso de problemas, compruebe por favor si su incidencia ha sido ya
@@ -48,6 +48,6 @@ Authors
 
 
 Maintainer
-~~~~~~~
+~~~~~~~~~~
 
 This module is maintained by QubiQ.

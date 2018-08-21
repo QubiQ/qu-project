@@ -1,0 +1,82 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_hours_consumption
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-08-21 11:44+0000\n"
+"PO-Revision-Date: 2018-08-21 13:44+0100\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 1.7.4\n"
+
+#. module: report_hours_consumption
+#: model:ir.ui.view,arch_db:report_hours_consumption.view_hours_consumption_form
+msgid "Close"
+msgstr "Cerrar"
+
+#. module: report_hours_consumption
+#: model:ir.model.fields,field_description:report_hours_consumption.field_report_hours_consumption_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: report_hours_consumption
+#: model:ir.model.fields,field_description:report_hours_consumption.field_report_hours_consumption_create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: report_hours_consumption
+#: model:ir.model.fields,field_description:report_hours_consumption.field_report_hours_consumption_display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: report_hours_consumption
+#: model:ir.ui.view,arch_db:report_hours_consumption.view_hours_consumption_form
+msgid "Export"
+msgstr "Exportar"
+
+#. module: report_hours_consumption
+#: model:ir.actions.act_window,name:report_hours_consumption.action_hours_consumption
+#: model:ir.ui.menu,name:report_hours_consumption.menu_bolsa_horas
+#: model:ir.ui.view,arch_db:report_hours_consumption.view_hours_consumption_form
+msgid "Hours Consumption"
+msgstr "Consumo de horas"
+
+#. module: report_hours_consumption
+#: model:ir.model.fields,field_description:report_hours_consumption.field_report_hours_consumption_id
+msgid "ID"
+msgstr "ID"
+
+#. module: report_hours_consumption
+#: model:ir.model.fields,field_description:report_hours_consumption.field_report_hours_consumption___last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: report_hours_consumption
+#: model:ir.model.fields,field_description:report_hours_consumption.field_report_hours_consumption_write_uid
+msgid "Last Updated by"
+msgstr "Última actualización de"
+
+#. module: report_hours_consumption
+#: model:ir.model.fields,field_description:report_hours_consumption.field_report_hours_consumption_write_date
+msgid "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: report_hours_consumption
+#: code:addons/report_hours_consumption/wizard/report.py:24
+#: model:ir.model.fields,field_description:report_hours_consumption.field_report_hours_consumption_contract_id
+#, python-format
+msgid "Project"
+msgstr "Proyecto"
+
+#. module: report_hours_consumption
+#: model:ir.model,name:report_hours_consumption.model_report_hours_consumption
+msgid "report.hours.consumption"
+msgstr "report.hours.consumption"

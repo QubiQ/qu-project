@@ -7,3 +7,4 @@ from . import project
 from . import project_contract
 from . import account_analytic_line
 from . import res_users
+from . import project_task

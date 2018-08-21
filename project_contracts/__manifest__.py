@@ -23,6 +23,7 @@
         'views/project_contract.xml',
         'views/project.xml',
         'views/product_category.xml',
+        'views/project_task.xml',
         'security/ir.model.access.csv',
     ],
     'category': 'Project',
