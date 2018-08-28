@@ -22,7 +22,8 @@ class ReportHoursConsumption(models.TransientModel):
     contract_id = fields.Many2one(
         'project.contract',
         string=_('Project'),
-        required=True
+        required=True,
+        ondelete='set null'
     )
 
     def get_filename(self):
@@ -32,12 +33,14 @@ class ReportHoursConsumption(models.TransientModel):
 
     def _set_styles(self, wb):
         general_style = NamedStyle(name="general_style")
-        general_style.font = Font(name='Arial', bold=False, size=8, color="000000")
+        general_style.font = Font(
+            name='Arial', bold=False, size=8, color="000000")
         general_style.alignment = Alignment(horizontal='left')
         wb.add_named_style(general_style)
 
         hours_style = NamedStyle(name="hours_style")
-        hours_style.font = Font(name='Arial', bold=False, size=8, color="000000")
+        hours_style.font = Font(
+            name='Arial', bold=False, size=8, color="000000")
         hours_style.alignment = Alignment(horizontal='right')
         wb.add_named_style(hours_style)
 
@@ -107,7 +110,8 @@ class ReportHoursConsumption(models.TransientModel):
         # ESTILOS
         self._set_styles(wb)
         # Logo company
-        image_stream = BytesIO(codecs.decode(self.env.user.company_id.logo, 'base64'))
+        image_stream = BytesIO(codecs.decode(
+            self.env.user.company_id.logo, 'base64'))
         image = Image(image_stream)
         baseheight = 63.87
         hpercent = (baseheight/float(image.height))
@@ -136,7 +140,7 @@ class ReportHoursConsumption(models.TransientModel):
             tipo = None
             if aal.contract_hours:
                 tipo = 0
-            elif not aal.move_id:
+            elif not aal.move_id and aal.task_id.project_id.name:
                 if 'Issues' in aal.task_id.project_id.name:
                     tipo = 2
                 else:
@@ -210,11 +214,13 @@ class ReportHoursConsumption(models.TransientModel):
             ws[list_columnas[col]+str(linea)].style = 'general_style'
             # Horas Consumidas
             col += 1
-            ws[list_columnas[col]+str(linea)] = round(aal.unit_amount, 2) if tipo > 0 else 0.0
+            ws[list_columnas[col]+str(linea)] =\
+                round(aal.unit_amount, 2) if tipo > 0 else 0.0
             ws[list_columnas[col]+str(linea)].style = 'hours_style'
             # Horas Compradas
             col += 1
-            ws[list_columnas[col]+str(linea)] = round(aal.unit_amount, 2) if tipo == 0 else 0.0
+            ws[list_columnas[col]+str(linea)] =\
+                round(aal.unit_amount, 2) if tipo == 0 else 0.0
             ws[list_columnas[col]+str(linea)].style = 'hours_style'
             # Alcance
             col += 1

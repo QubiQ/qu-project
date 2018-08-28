@@ -20,8 +20,6 @@
         ]
     },
     'depends': [
-        'project',
-        'hr_timesheet',
         'project_contracts',
         'file_download',
     ],
