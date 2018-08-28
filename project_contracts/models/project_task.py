@@ -10,6 +10,6 @@ class ProjectTask(models.Model):
     _inherit = 'project.task'
 
     beyond_scope = fields.Boolean(
-    	string=_('Beyond Scope'),
-    	default=False
+        string=_('Beyond Scope'),
+        default=False
     )

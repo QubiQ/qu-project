@@ -6,8 +6,15 @@ from openupgradelib import openupgrade
 
 
 def create_project_contracts(env):
+    # Check enterprise
+    env.cr.execute("""Select EXISTS(
+        SELECT relname FROM pg_class WHERE relname = 'sale_subscription')
+    """)
+    subscription_table = env.cr.dictfetchall()[0]['exists']
+    query_subscription =\
+        "select array_agg(id) as ids from sale_subscription where partner_id "
     env.cr.execute("""
-        select  array_agg(acc.id) as id_acc, array_agg(pp.id) as id_pp,
+        select array_agg(acc.id) as id_acc, array_agg(pp.id) as id_pp,
                 acc.company_id as company_id, acc.partner_id as partner_id
         from project_project pp,
             (select id, name, partner_id, company_id
@@ -24,6 +31,7 @@ def create_project_contracts(env):
         "select state,date,user_id from account_analytic_account where id = "
     query_min_acc =\
         "select date_start from account_analytic_account where id = "
+
     for row in env.cr.dictfetchall():
         env.cr.execute(query_max_acc+str(max(list(row['id_acc']))))
         acc_max = env.cr.dictfetchall()
@@ -45,7 +53,32 @@ def create_project_contracts(env):
             'state': state,
             'company_id': row['company_id'],
         }
-        contract.create(vals_pc)
+        contract = contract.create(vals_pc)
+        # Change the messages
+        aac_ids = contract.project_ids.mapped('analytic_account_id').ids
+        if aac_ids:
+            for notification in env['mail.message'].sudo().search([
+                ('model', '=', 'account.analytic.account'),
+                ('res_id', 'in', aac_ids),
+               ]):
+                notification.write({
+                    'model': 'project.contract',
+                    'res_id': contract.id,
+                })
+            if subscription_table:
+                env.cr.execute(
+                    query_subscription+'='+str(contract.partner_id.id))
+                ss_ids = env.cr.dictfetchall()[0]['ids']
+                if ss_ids:
+                    ss_ids = list(ss_ids)
+                    for notifcacion in env['mail.message'].sudo().search([
+                        ('model', '=', 'sale.subscription'),
+                        ('res_id', 'in', ss_ids)
+                       ]):
+                        notification.write({
+                            'model': 'project.contract',
+                            'res_id': contract.id,
+                        })
 
 
 @openupgrade.migrate()

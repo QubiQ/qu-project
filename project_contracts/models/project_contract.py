@@ -4,6 +4,7 @@
 
 
 from odoo import models, fields, api, _
+from odoo.exceptions import UserError
 
 
 class ProjectContract(models.Model):
@@ -84,6 +85,47 @@ class ProjectContract(models.Model):
         default='open',
         track_visibility='onchange', copy=False
     )
+    invoice_count = fields.Integer(
+        string=_('Number Invoices'),
+        compute='_get_invoice_count'
+    )
+
+    @api.multi
+    def unlink(self):
+        for order in self:
+            if order.state != 'cancelled':
+                raise UserError(_('You can not delete a contract!'
+                                  ' Try to cancel it before.'))
+        return super(ProjectContract, self).unlink()
+
+    @api.multi
+    def _get_invoice_count(self):
+        for sel in self:
+            invoice_count = 0
+            if sel.project_ids:
+                invoice_count = len(self.env['account.invoice'].search([
+                    ('account_analytic_ids', 'in',
+                        sel.project_ids.mapped('analytic_account_id').ids)
+                ]))
+            sel.invoice_count = invoice_count
+
+    @api.multi
+    def invoice_projects(self):
+        invoice_ids = []
+        for sel in self:
+            invoice_ids = self.env['account.invoice'].search([
+                    ('account_analytic_ids', 'in',
+                        sel.project_ids.mapped('analytic_account_id').ids)
+                ]).ids
+        return {
+            'name': _('Account Invoice'),
+            'view_type': 'form',
+            'view_mode': 'tree,form',
+            'res_model': 'account.invoice',
+            'view_id': False,
+            'type': 'ir.actions.act_window',
+            'domain': [('id', 'in', invoice_ids)],
+        }
 
     @api.multi
     def _get_quantity_max(self):
