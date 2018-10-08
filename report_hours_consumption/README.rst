@@ -1,12 +1,13 @@
 .. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
-   :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
-   :alt: License: AGPL-3
+	:target: http://www.gnu.org/licenses/agpl
+	:alt: License: AGPL-3
 
-================================
-Report Project Hours Consumption
-================================
+========================
+Report Hours Consumption
+========================
 
 This module allow new report for hours consumption from projects.
+
 
 Installation
 ============
@@ -23,16 +24,25 @@ Don't need configuration.
 Usage
 =====
 
-#.In Project/Reports/Hours Consumption.
-#.Select Contract and click export.
+#. In Project/Reports/Hours Consumption.
+#. Select Contract and click export.
 
-Error management
-================
 
-Los errores/fallos se gestionan en `las incidencias de GitHub <https://github.com/QubiQ/qu-project/issues>`_.
-En caso de problemas, compruebe por favor si su incidencia ha sido ya
-reportada. Si fue el primero en descubrirla, ayúdenos a solucionarla indicando
-una detallada descripción `aquí <https://github.com/QubiQ/qu-project/issues/new>`_.
+ROADMAP
+=======
+
+* ...
+
+
+Bug Tracker
+===========
+
+Bugs and errors are managed in `issues of GitHub <https://github.com/QubiQ/qu-project/issues>`_.
+In case of problems, please check if your problem has already been
+reported. If you are the first to discover it, help us solving it by indicating
+a detailed description `here <https://github.com/QubiQ/qu-project/issues/new>`_.
+
+Do not contact contributors directly about support or help with technical issues.
 
 
 Credits
@@ -44,7 +54,21 @@ Authors
 * Valentin Vinagre <valentin.vinagre@qubiq.es>
 
 
+Contributors
+~~~~~~~~~~~~
+
+* Xavier Piernas <xavier.piernas@qubiq.es>
+
+
 Maintainer
 ~~~~~~~~~~
 
 This module is maintained by QubiQ.
+
+.. image:: https://pbs.twimg.com/profile_images/702799639855157248/ujffk9GL_200x200.png
+   :alt: QubiQ
+   :target: https://www.qubiq.es
+
+This module is part of the `QubiQ/qu-project <https://github.com/QubiQ/qu-project>`_.
+
+To contribute to this module, please visit https://github.com/QubiQ.
