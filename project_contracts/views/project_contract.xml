@@ -84,7 +84,7 @@
                     </group>
                     <notebook>
                         <page string="Projects" name="projects">
-                            <field name="project_ids"/>
+                            <field name="project_ids" widget="many2many" domain="[('contract_id', '=', False)]"/>
                         </page>
                     </notebook>
                 </sheet>

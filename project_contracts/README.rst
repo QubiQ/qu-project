@@ -24,9 +24,9 @@ In the category of products that contain the products used for the sale of contr
 Usage
 =====
 
-#.In Project/Contracts/Contracts, can create one new contract. In a task if it is related to a project and this to a contract only an imputation can be added if the contract is open.
-#.There is a cron that checks contracts daily to verify that if they are in negative hours and their status is open, they change to renew and send an email to the contract manager informing them.
-#.To increase the maximum hours of a contract, you must make a sale / invoice to the customer of the contract with a product of the category where the check 'Contract hours' has been placed.
+#. In Project/Contracts/Contracts, can create one new contract. In a task if it is related to a project and this to a contract only an imputation can be added if the contract is open.
+#. There is a cron that checks contracts daily to verify that if they are in negative hours and their status is open, they change to renew and send an email to the contract manager informing them.
+#. To increase the maximum hours of a contract, you must make a sale / invoice to the customer of the contract with a product of the category where the check 'Contract hours' has been placed.
 
 
 Gestión de errores
