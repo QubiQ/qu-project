@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import models, api
+from odoo.exceptions import ValidationError
 
 
 class ProjectTask(models.Model):
@@ -16,7 +17,7 @@ class ProjectTask(models.Model):
 
     def _prepare_opportunity_data(self):
         return {
-            'name': 'OP-<' + self.project_id.name + '>',
+            'name': 'OP-' + self.project_id.name,
             'partner_id': self.partner_id.id,
             'user_id': self.user_id.id,
             'project_id': self.project_id.id,
@@ -27,7 +28,11 @@ class ProjectTask(models.Model):
     @api.multi
     def write(self, vals):
         res = super(ProjectTask, self).write(vals)
+
         if self.stage_id.create_opportunity and self._check_opportunity() == 0:
+            if not self.partner_id:
+                raise ValidationError(
+                    'Error! The task is not related to any customer!.')
             self.env['crm.lead'].create(
                 self._prepare_opportunity_data()
             )._onchange_partner_id()
