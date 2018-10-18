@@ -15,6 +15,6 @@ addon | version | summary
 [views_projects](views_projects/) | 10.0.1.0.0 | Add views to projects
 [qu_project_code](qu_project_code/) | 10.0.1.0.0 | Add a sequence to projects
 [recurring_projects_tasks](recurring_projects_tasks/) | 10.0.1.0.0 | Create projects and tasks template and recurrents
-
+[project_stage_opportunity](project_stage_opportunity/) | 10.0.1.0.0 | Create an opportunity when a task stage is changed
 
 [//]: # (end addons)

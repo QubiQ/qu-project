@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018 Xavier Piernas <xavier.piernas@qubiq.es>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="project_task_type_form" model="ir.ui.view">
+        <field name="name">project.task.type.form</field>
+        <field name="model">project.task.type</field>
+        <field name="inherit_id" ref="project.task_type_edit"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[1]/group[1]" position="inside">
+                <field name="create_opportunity"/>
+                <field name="stage_id" attrs="{'invisible': [('create_opportunity', '=', False)], 'required': [('create_opportunity', '=', True)]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
