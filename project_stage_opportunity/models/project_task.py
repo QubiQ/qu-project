@@ -10,7 +10,7 @@ class ProjectTask(models.Model):
 
     def _check_opportunity(self):
         return self.env['crm.lead'].search_count([
-            ('name', '=', 'OP-<' + self.project_id.name + '>'),
+            ('name', '=', 'OP-' + self.project_id.name),
             ('partner_id', '=', self.partner_id.id),
             ('project_id', '=', self.project_id.id)
         ])
