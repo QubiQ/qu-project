@@ -22,7 +22,7 @@ class ReportHoursConsumption(models.TransientModel):
     def get_contact(self, aal, kind):
         res = super(ReportHoursConsumption, self).get_contact(aal, kind)
         if kind == 'Helpdesk':
-            res = aal.helpdesk_ticket_id.partner_id or ''
+            res = aal.helpdesk_ticket_id.partner_id.name or ''
         return res
 
     def get_origin(self, aal, kind):
