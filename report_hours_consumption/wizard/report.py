@@ -184,10 +184,13 @@ class ReportHoursConsumption(models.TransientModel):
         ws['J1'] = self._format_date(datetime.now())
         ws['J1'].style = 'general_style'
         # Body
-        for aal in self.env['account.analytic.line'].search([
-                ('contract_id', '=', self.contract_id.id),
-                ]
-           ).sorted(key='create_date'):
+        for aal in self.env['account.analytic.line'].search(
+            [('contract_id', '=', self.contract_id.id)]
+        ).filtered(
+           lambda x:
+           (not x.product_id) or
+           (x.product_id and x.product_id.categ_id.show_hours_report)
+        ).sorted(key='create_date'):
             ws.row_dimensions[line].height = 20
             kind = self.get_type(aal)
             # Type

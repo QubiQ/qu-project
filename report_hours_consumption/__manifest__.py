@@ -23,5 +23,6 @@
     ],
     "data": [
         "wizard/report.xml",
+        "views/product_category.xml"
     ],
 }
