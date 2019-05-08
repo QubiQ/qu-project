@@ -18,9 +18,6 @@ class ProjectProject(models.Model):
         string="Date start",
         default=fields.Datetime.now()
     )
-    date_end_project = fields.Datetime(
-        string="Date end"
-    )
     date_end_project_date = fields.Date(
         string="Date end format date",
         compute="get_date_end_project_date",
@@ -28,11 +25,11 @@ class ProjectProject(models.Model):
         store=True
     )
 
-    @api.depends('date_end_project')
+    @api.depends('date')
     @api.multi
     def get_date_end_project_date(self):
         for sel in self:
-            if sel.date_end_project:
+            if sel.date:
                 sel.date_end_project_date =\
                     fields.Datetime.from_string(
-                                sel.date_end_project).date()
+                                sel.date).date()

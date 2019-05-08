@@ -19,7 +19,7 @@
         <field name="type">timeline</field>
         <field name="arch" type="xml">
             <timeline date_start="date_start"
-                      date_stop="date_end_project"
+                      date_stop="date"
                       event_open_popup="true"
                       default_group_by="user_id"
                       colors="#ec7063: user_id == false;"
@@ -61,19 +61,6 @@
                     </div>
                 </div>
             </div>
-        </field>
-    </record>
-
-    <!-- Form -->
-    <record id="bis_edit_project" model="ir.ui.view">
-        <field name="name">bis.project.project.form.inherit</field>
-        <field name="model">project.project</field>
-        <field name="inherit_id" ref="project_task_default_stage.edit_project"/>
-        <field name="arch" type="xml">
-            <field name="resource_calendar_id" position="after">
-                <field name="date_start"/>
-                <field name="date_end_project"/>
-            </field>
         </field>
     </record>
 
