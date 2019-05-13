@@ -21,6 +21,10 @@ class AccountAnalyticLine(models.Model):
         store=True,
         string=_('Category Hours')
     )
+    billable = fields.Boolean(
+        string=_('Billable'),
+        default=True
+    )
 
     @api.multi
     @api.constrains('account_id')

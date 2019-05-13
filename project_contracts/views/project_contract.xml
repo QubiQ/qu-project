@@ -59,7 +59,7 @@
                 <sheet>
                     <div class="oe_button_box" name="button_box" groups="base.group_user">
                         <button class="oe_stat_button" name="invoice_projects"  type="object" icon="fa-money">
-                            <field string="Items" name="invoice_count" widget="statinfo" />
+                            <field string="Invoices" name="invoice_count" widget="statinfo" />
                         </button>
                         <button class="oe_stat_button" name="%(act_hr_timesheet_line_by_project_contract)d" type="action" icon="fa-calendar" string="Timesheets" groups="hr_timesheet.group_hr_timesheet_user"/>
                     </div>

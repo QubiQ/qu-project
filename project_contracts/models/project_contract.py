@@ -105,7 +105,9 @@ class ProjectContract(models.Model):
             if sel.project_ids:
                 invoice_count = len(self.env['account.invoice'].search([
                     ('account_analytic_ids', 'in',
-                        sel.project_ids.mapped('analytic_account_id').ids)
+                        sel.project_ids.mapped('analytic_account_id').ids),
+                    ('partner_id', '=', sel.partner_id.name),
+                    ('company_id', '=', sel.company_id.name)
                 ]))
             sel.invoice_count = invoice_count
 
@@ -115,14 +117,19 @@ class ProjectContract(models.Model):
         for sel in self:
             invoice_ids = self.env['account.invoice'].search([
                     ('account_analytic_ids', 'in',
-                        sel.project_ids.mapped('analytic_account_id').ids)
+                        sel.project_ids.mapped('analytic_account_id').ids),
+                    ('partner_id', '=', sel.partner_id.name),
+                    ('company_id', '=', sel.company_id.name)
                 ]).ids
+        tree_view = self.env.ref('account.invoice_tree')
+        form_view = self.env.ref('account.invoice_form')
         return {
             'name': _('Account Invoice'),
             'view_type': 'form',
             'view_mode': 'tree,form',
             'res_model': 'account.invoice',
-            'view_id': False,
+            'view_id': tree_view.id,
+            'views': [(tree_view.id, 'tree'), (form_view.id, 'form')],
             'type': 'ir.actions.act_window',
             'domain': [('id', 'in', invoice_ids)],
         }
@@ -146,7 +153,8 @@ class ProjectContract(models.Model):
                 [line.unit_amount for line in
                     self.env['account.analytic.line'].search([
                         ('contract_id', '=', sel.id),
-                        ('move_id', 'in', (False, None))
+                        ('move_id', 'in', (False, None)),
+                        ('billable', '=', True)
                         ]
                     )]
                 )

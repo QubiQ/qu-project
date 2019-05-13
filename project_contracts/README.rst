@@ -28,6 +28,8 @@ Usage
 #. There is a cron that checks contracts daily to verify that if they are in negative hours and their status is open, they change to renew and send an email to the contract manager informing them.
 #. To increase the maximum hours of a contract, you must make a sale / invoice to the customer of the contract with a product of the category where the check 'Contract hours' has been placed.
 
+ You can also access a client's contracts through the client's contact.
+
 
 Gestión de errores
 ==================

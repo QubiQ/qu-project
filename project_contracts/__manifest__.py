@@ -15,6 +15,7 @@
         'account',
         'product',
         'hr_timesheet',
+        'account_accountant',
     ],
     'data': [
         'data/email_template.xml',
@@ -24,6 +25,7 @@
         'views/project.xml',
         'views/product_category.xml',
         'views/project_task.xml',
+        'views/res_partner.xml',
         'security/ir.model.access.csv',
     ],
     'category': 'Project',
