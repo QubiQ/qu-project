@@ -13,6 +13,7 @@ addon | version | summary
 [report_hours_consumption](report_hours_consumption/) | 11.0.1.0.0 | Report for contracts
 [report_hours_consumption_helpdesk](report_hours_consumption_helpdesk/) | 11.0.1.0.0 | extends the Report Hours Consumption module to consider Helpdesk hours
 [create_helpdesk_project](create_helpdesk_project/) | 11.0.1.0.0 | Allow you to create a new helpdesk team from the project settings. The helpdesk will be associated to the project.
+[contract_price_hour](contract_price_hour/) | 11.0.1.0.0 | Price for hour in a contract
 
 
 [//]: # (end addons)
