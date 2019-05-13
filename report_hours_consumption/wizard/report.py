@@ -22,6 +22,16 @@ class ReportHoursConsumption(models.TransientModel):
         required=True,
         ondelete='set null'
     )
+    type_hours = fields.Selection(
+        string=_('Type of hours'),
+        required=True,
+        default='all',
+        selection=[
+            ('billable', 'Billable'),
+            ('nobillable', 'No Billable'),
+            ('all', 'All')
+        ]
+    )
 
     def get_filename(self):
         name = _('Hours Consumption')
@@ -161,7 +171,7 @@ class ReportHoursConsumption(models.TransientModel):
             'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
             'W', 'X', 'Y', 'Z'
         ]
-        fix_col = 11
+        fix_col = 12
         # Save the number of columns we will fill
         col_list = letters_list[:fix_col]
         line = 5
@@ -184,9 +194,10 @@ class ReportHoursConsumption(models.TransientModel):
         ws['J1'] = self._format_date(datetime.now())
         ws['J1'].style = 'general_style'
         # Body
-        for aal in self.env['account.analytic.line'].search(
-            [('contract_id', '=', self.contract_id.id)]
-        ).filtered(
+        domain = [('contract_id', '=', self.contract_id.id)]
+        if self.type_hours != 'all':
+            domain.append(('billable', '=', self.type_hours == 'billable'))
+        for aal in self.env['account.analytic.line'].search(domain).filtered(
            lambda x:
            (not x.product_id) or
            (x.product_id and x.product_id.categ_id.show_hours_report)
@@ -293,6 +304,15 @@ class ReportHoursConsumption(models.TransientModel):
             else:
                 scope = 'No'
             ws[col_list[col]+str(line)] = scope
+            ws[col_list[col]+str(line)].style = 'general_style'
+            # Billable
+            col += 1
+            billable = ''
+            if aal.billable:
+                billable = 'Sí'
+            else:
+                billable = 'No'
+            ws[col_list[col]+str(line)] = billable
             ws[col_list[col]+str(line)].style = 'general_style'
             line += 1
         ws.row_dimensions[line].height = 30
