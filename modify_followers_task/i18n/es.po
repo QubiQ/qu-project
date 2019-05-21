@@ -1,0 +1,102 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* modify_followers_task
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-05-21 07:23+0000\n"
+"PO-Revision-Date: 2019-05-21 09:25+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Last-Translator: \n"
+"Language: es_ES\n"
+
+#. module: modify_followers_task
+#: model_terms:ir.ui.view,arch_db:modify_followers_task.modify_followers_task_wizard
+msgid "ACCEPT"
+msgstr "ACEPTAR"
+
+#. module: modify_followers_task
+#: model_terms:ir.ui.view,arch_db:modify_followers_task.modify_followers_task_wizard
+msgid "CANCEL"
+msgstr "CANCELAR"
+
+#. module: modify_followers_task
+#: model:ir.model.fields,field_description:modify_followers_task.field_modify_followers_task_wizard__channel_ids
+msgid "Canal"
+msgstr ""
+
+#. module: modify_followers_task
+#: code:addons/modify_followers_task/wizard/modify_followers_task_wizard.py:18
+#, python-format
+msgid "Channel"
+msgstr "Canal"
+
+#. module: modify_followers_task
+#: model_terms:ir.ui.view,arch_db:modify_followers_task.modify_followers_task_wizard
+msgid "Channels"
+msgstr "Canales"
+
+#. module: modify_followers_task
+#: model:ir.model.fields,field_description:modify_followers_task.field_modify_followers_task_wizard__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: modify_followers_task
+#: model:ir.model.fields,field_description:modify_followers_task.field_modify_followers_task_wizard__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: modify_followers_task
+#: model:ir.model.fields,field_description:modify_followers_task.field_modify_followers_task_wizard__display_name
+msgid "Display Name"
+msgstr "Mostrar Nombre"
+
+#. module: modify_followers_task
+#: code:addons/modify_followers_task/wizard/modify_followers_task_wizard.py:12
+#: model_terms:ir.ui.view,arch_db:modify_followers_task.modify_followers_task_wizard
+#, python-format
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: modify_followers_task
+#: model:ir.model.fields,field_description:modify_followers_task.field_modify_followers_task_wizard__id
+msgid "ID"
+msgstr "ID"
+
+#. module: modify_followers_task
+#: model:ir.model.fields,field_description:modify_followers_task.field_modify_followers_task_wizard____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: modify_followers_task
+#: model:ir.model.fields,field_description:modify_followers_task.field_modify_followers_task_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: modify_followers_task
+#: model:ir.model.fields,field_description:modify_followers_task.field_modify_followers_task_wizard__write_date
+msgid "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: modify_followers_task
+#: model:ir.actions.act_window,name:modify_followers_task.action_modify_followers_task
+#: model_terms:ir.ui.view,arch_db:modify_followers_task.project_task_form_view
+msgid "Modify Followers"
+msgstr "Modificar Seguidores"
+
+#. module: modify_followers_task
+#: model:ir.model.fields,field_description:modify_followers_task.field_modify_followers_task_wizard__follower_ids
+msgid "Seguidores"
+msgstr ""
+
+#. module: modify_followers_task
+#: model:ir.model,name:modify_followers_task.model_modify_followers_task_wizard
+msgid "modify.followers.task.wizard"
+msgstr ""

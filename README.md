@@ -15,6 +15,7 @@ addon | version | summary
 [create_helpdesk_project](create_helpdesk_project/) | 12.0.1.0.0 | Allow you to create a new helpdesk team from the project settings. The helpdesk will be associated to the project.
 [contract_price_hour](contract_price_hour/) | 12.0.1.0.0 | Price for hour in a contract
 [modify_followers_issue](modify_followers_issue/) | 12.0.1.0.0 | Modify list of followers from a helpdesk ticket
+[modify_followers_task](modify_followers_task/) | 12.0.1.0.0 | Modify list of followers from a project task
 
 [//]: # (end addons)
 
