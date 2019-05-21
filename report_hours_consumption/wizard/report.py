@@ -25,7 +25,7 @@ class ReportHoursConsumption(models.TransientModel):
     type_hours = fields.Selection(
         string=_('Type of hours'),
         required=True,
-        default='all',
+        default='billable',
         selection=[
             ('billable', 'Billable'),
             ('nobillable', 'No Billable'),
