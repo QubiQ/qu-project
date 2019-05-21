@@ -12,9 +12,13 @@
     "application": True,
     "installable": True,
     "depends": [
-        "report_hours_consumption",
-        "helpdesk"
+        'report_hours_consumption',
+        'account',
+        'helpdesk_timesheet',
+        'helpdesk',
+        'project_contracts',
     ],
     "data": [
+        'views/helpdesk_ticket_view.xml'
     ],
 }
