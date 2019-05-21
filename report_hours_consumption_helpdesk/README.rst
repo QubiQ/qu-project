@@ -18,7 +18,8 @@ Just install
 Configuration
 =============
 
-Don't need configuration.
+If you go to helpdesk and clicks on any ticket, you can define if a imputation is 
+billable or not. This option will be visible in the report to be shown.
 
 
 Usage
