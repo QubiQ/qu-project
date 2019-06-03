@@ -9,7 +9,8 @@ class ProjectContract(models.Model):
 
     hour_price = fields.Float(
         string=_('Hour Price'),
-        compute='_get_hours_price'
+        compute='_get_hours_price',
+        compute_sudo=True,
     )
 
     @api.multi
