@@ -10,13 +10,12 @@ class ProjectContract(models.Model):
     hour_price = fields.Float(
         string=_('Hour Price'),
         compute='_get_hours_price',
-        compute_sudo=True,
     )
 
     @api.multi
     def _get_hours_price(self):
         for sel in self:
-            invoice_ids = self.env['account.invoice'].search([
+            invoice_ids = self.env['account.invoice'].sudo().search([
                     ('account_analytic_ids', 'in',
                         sel.project_ids.mapped('analytic_account_id').ids),
                     ('partner_id', '=', sel.partner_id.name),
