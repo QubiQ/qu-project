@@ -11,12 +11,17 @@ class ResPartner(models.Model):
         string=_('Number Contracts'),
         compute='_get_contract_count'
     )
+    project_contract_ids = fields.One2many(
+        string=_('Contracts'),
+        comodel_name='project.contract',
+        inverse_name='partner_id'
+    )
 
     @api.multi
     def _get_contract_count(self):
         for sel in self:
             contract_count = 0
-            if sel.contract_ids:
+            if sel.project_contract_ids:
                 contract_count = len(self.env['project.contract'].search([
                     ('partner_id', '=', sel.name)
                 ]))
