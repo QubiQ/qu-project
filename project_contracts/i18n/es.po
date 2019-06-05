@@ -6,16 +6,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-10 07:53+0000\n"
-"PO-Revision-Date: 2019-05-10 10:05+0200\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2019-05-09 10:29+0000\n"
+"PO-Revision-Date: 2019-05-09 12:57+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: \n"
-"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.7.1\n"
+"Last-Translator: \n"
+"Language: es_ES\n"
 
 #. module: project_contracts
 #: model:mail.template,body_html:project_contracts.project_contract_cron_email_template
@@ -36,14 +36,18 @@ msgid ""
 "    % for contract in object.project_contracts_ids:\n"
 "        <tr>\n"
 "            <td>${contract.partner_id.name}</td>\n"
-"            <td><a href=\"${ctx[\"base_url\"]}/web#id=${contract.id}&view_type=form&model=project.contract&action=${ctx[\"action_id\"]}&menu_id=${ctx[\"menu_id\"]}\">${contract.name}</a></td>\n"
+"            <td><a href=\"${ctx[\"base_url\"]}/web#id=${contract.id}"
+"&view_type=form&model=project.contract&action=${ctx[\"action_id\"]}&menu_id="
+"${ctx[\"menu_id\"]}\">${contract.name}</a></td>\n"
 "            <td>${contract.date_start} to ${contract.date_end or '-'}</td>\n"
 "            <td>\n"
 "            % if contract.quantity_max != 0.0:\n"
-"                ${'{:,.2f}'.format(contract.remaining_hours)}/${'{:,.2f}'.format(contract.quantity_max)} units\n"
+"                ${'{:,.2f}'.format(contract.remaining_hours)}/${'{:,.2f}'."
+"format(contract.quantity_max)} units\n"
 "            % endif\n"
 "            </td>\n"
-"            <td>${contract.partner_id.phone or ''}, ${contract.partner_id.email or ''}</td>\n"
+"            <td>${contract.partner_id.phone or ''}, ${contract.partner_id."
+"email or ''}</td>\n"
 "        </tr>\n"
 "    % endfor\n"
 "</table>\n"
@@ -67,7 +71,7 @@ msgstr ""
 "\n"
 "Hola ${object.name},\n"
 "<br/><br/>\n"
-"    <h2>Los siguientes contratos han caducado: </h2>\n"
+"    <h2>Los siguientes contratos han expirado: </h2>\n"
 "<br/><br/>\n"
 "<table cellspacing=\"1\" border=\"1\" cellpadding=\"4\">\n"
 "    <tr>\n"
@@ -80,23 +84,27 @@ msgstr ""
 "    % for contract in object.project_contracts_ids:\n"
 "        <tr>\n"
 "            <td>${contract.partner_id.name}</td>\n"
-"            <td><a href=\"${ctx[\"base_url\"]}/web#id=${contract.id}&view_type=form&model=project.contract&action=${ctx[\"action_id\"]}&menu_id=${ctx[\"menu_id\"]}\">${contract.name}</a></td>\n"
+"            <td><a href=\"${ctx[\"base_url\"]}/web#id=${contract.id}"
+"&view_type=form&model=project.contract&action=${ctx[\"action_id\"]}&menu_id="
+"${ctx[\"menu_id\"]}\">${contract.name}</a></td>\n"
 "            <td>${contract.date_start} to ${contract.date_end or '-'}</td>\n"
 "            <td>\n"
 "            % if contract.quantity_max != 0.0:\n"
-"                ${'{:,.2f}'.format(contract.remaining_hours)}/${'{:,.2f}'.format(contract.quantity_max)} units\n"
+"                ${'{:,.2f}'.format(contract.remaining_hours)}/${'{:,.2f}'."
+"format(contract.quantity_max)} units\n"
 "            % endif\n"
 "            </td>\n"
-"            <td>${contract.partner_id.phone or ''}, ${contract.partner_id.email or ''}</td>\n"
+"            <td>${contract.partner_id.phone or ''}, ${contract.partner_id."
+"email or ''}</td>\n"
 "        </tr>\n"
 "    % endfor\n"
 "</table>\n"
 "\n"
 "<p>\n"
-"    Puede verificar todos los contratos a renovar utilizando el menú:\n"
+"     Puede verificar todos los contratos a renovar utilizando el menú:\n"
 "</p>\n"
 "<ul>\n"
-"    <li>Proyecto / Contratos / Contratos</li>\n"
+"    <li>Project / Contracts / Contracts</li>\n"
 "</ul>\n"
 "<p>\n"
 "    Gracias,\n"
@@ -105,8 +113,7 @@ msgstr ""
 "<pre>\n"
 "--\n"
 "Odoo Automatic Email\n"
-"</pre>\n"
-"            "
+"</pre>"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/project_contract.py:127
@@ -117,19 +124,19 @@ msgstr "Factura de la cuenta"
 #. module: project_contracts
 #: model_terms:ir.ui.view,arch_db:project_contracts.view_search_project_contract
 msgid "Account Manager"
-msgstr "Gerente de cuentas "
+msgstr "Gestor de cuentas"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/account_invoice.py:16
 #: model:ir.model.fields,field_description:project_contracts.field_account_invoice__account_analytic_ids
 #, python-format
 msgid "Account analytic"
-msgstr "Cuenta analítica"
+msgstr "Análisis de cuentas"
 
 #. module: project_contracts
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract__message_needaction
 msgid "Action Needed"
-msgstr "Acción Necesaria"
+msgstr "Acción necesaria "
 
 #. module: project_contracts
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract__activity_ids
@@ -139,17 +146,12 @@ msgstr "Actividades"
 #. module: project_contracts
 #: model:ir.actions.act_window,name:project_contracts.act_hr_timesheet_line_by_project_contract
 msgid "Activities contract"
-msgstr "Contrato de actividades"
+msgstr "Actividades de contrato"
 
 #. module: project_contracts
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract__activity_state
 msgid "Activity State"
-msgstr "Estado de la actividad"
-
-#. module: project_contracts
-#: model:ir.model.fields,help:project_contracts.field_project_contract__attachment_ids
-msgid "Adjunto que no procede de un mensaje."
-msgstr ""
+msgstr "Estado de actividad"
 
 #. module: project_contracts
 #: model:ir.model,name:project_contracts.model_account_analytic_line
@@ -159,13 +161,14 @@ msgstr "Línea Analítica"
 #. module: project_contracts
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract__message_attachment_count
 msgid "Attachment Count"
-msgstr "Conteo de archivos adjuntos"
+msgstr "Recuento de archivos adjuntos"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/project_contract.py:77
+#: model:ir.model.fields,help:project_contracts.field_project_contract__attachment_ids
 #, python-format
 msgid "Attachment that don't come from message."
-msgstr "Adjunto que no procede de un mensaje."
+msgstr "Archivos adjuntos que no provienen de un mensaje."
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/project_task.py:13
@@ -176,9 +179,10 @@ msgstr "Más allá del alcance"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/account_analytic_line.py:25
+#: model:ir.model.fields,field_description:project_contracts.field_account_analytic_line__billable
 #, python-format
 msgid "Billable"
-msgstr "Facturables"
+msgstr "Facturable"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/account_analytic_line.py:35
@@ -189,7 +193,7 @@ msgstr "No se puede crear la línea, por favor renueve el contrato."
 #. module: project_contracts
 #: model_terms:ir.ui.view,arch_db:project_contracts.view_form_project_contract
 msgid "Cancelar contrato"
-msgstr ""
+msgstr "Cancelar contrato"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/project_contract.py:83
@@ -220,22 +224,17 @@ msgstr "Categoría de producto para las horas máximas de los contratos."
 #. module: project_contracts
 #: model_terms:ir.ui.view,arch_db:project_contracts.view_form_project_contract
 msgid "Cerrar contrato"
-msgstr ""
+msgstr "Cerrar contrato"
 
 #. module: project_contracts
 #: model_terms:ir.actions.act_window,help:project_contracts.action_project_contracts
 msgid "Click to add a Contract."
-msgstr "Haga clic para añadir un contrato."
+msgstr "Haga clic para añadir contrato"
 
 #. module: project_contracts
 #: model_terms:ir.actions.act_window,help:project_contracts.act_hr_timesheet_line_by_project_contract
 msgid "Click to record activities."
-msgstr "Haga clic para grabar las actividades"
-
-#. module: project_contracts
-#: model:ir.model.fields,field_description:project_contracts.field_project_contract__partner_id
-msgid "Cliente"
-msgstr ""
+msgstr "Haga clic para grabar las actividades."
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/project_contract.py:82
@@ -252,14 +251,10 @@ msgstr "Contratos cerrados"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/project_contract.py:71
+#: model:ir.model.fields,field_description:project_contracts.field_project_contract__company_id
 #, python-format
 msgid "Company"
 msgstr "Compañia"
-
-#. module: project_contracts
-#: model:ir.model.fields,field_description:project_contracts.field_project_contract__company_id
-msgid "Compañía"
-msgstr ""
 
 #. module: project_contracts
 #: model:ir.model,name:project_contracts.model_res_partner
@@ -275,14 +270,14 @@ msgstr "Contacto"
 #: model_terms:ir.ui.view,arch_db:project_contracts.view_tree_project_contract
 #, python-format
 msgid "Contract"
-msgstr "Contrato"
+msgstr "Contracto"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/product_category.py:13
 #: model:ir.model.fields,field_description:project_contracts.field_product_category__contract_hours
 #, python-format
 msgid "Contract Hours"
-msgstr "Horas de contrato"
+msgstr "Horas del contrato"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/project_contract.py:16
@@ -290,7 +285,7 @@ msgstr "Horas de contrato"
 #: model_terms:ir.ui.view,arch_db:project_contracts.view_form_project_contract
 #, python-format
 msgid "Contract Name"
-msgstr "Nombre de contrato"
+msgstr "Nombre del contrato"
 
 #. module: project_contracts
 #: model:ir.actions.act_window,name:project_contracts.action_project_contracts
@@ -315,10 +310,11 @@ msgstr "Creado por"
 #. module: project_contracts
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract__create_date
 msgid "Created on"
-msgstr "Creado el"
+msgstr "Creado en"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/project_contract.py:22
+#: model:ir.model.fields,field_description:project_contracts.field_project_contract__partner_id
 #, python-format
 msgid "Customer"
 msgstr "Cliente"
@@ -340,17 +336,12 @@ msgstr "Fecha de inicio"
 #. module: project_contracts
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract__display_name
 msgid "Display Name"
-msgstr "Nombre mostrado"
+msgstr "Mostrar nombre"
 
 #. module: project_contracts
 #: model_terms:ir.ui.view,arch_db:project_contracts.view_form_project_contract
 msgid "Establecer a 'En progreso'"
-msgstr ""
-
-#. module: project_contracts
-#: model:ir.model.fields,field_description:project_contracts.field_account_analytic_line__billable
-msgid "Facturables"
-msgstr ""
+msgstr "Establecer a 'En progreso'"
 
 #. module: project_contracts
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract__message_follower_ids
@@ -365,7 +356,7 @@ msgstr "Seguidores (Canales)"
 #. module: project_contracts
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract__message_partner_ids
 msgid "Followers (Partners)"
-msgstr "Seguidores (Empresas)"
+msgstr "Seguidores (Socios)"
 
 #. module: project_contracts
 #: model_terms:ir.ui.view,arch_db:project_contracts.view_search_project_contract
@@ -394,17 +385,17 @@ msgstr "ID"
 #. module: project_contracts
 #: model:ir.model.fields,help:project_contracts.field_project_contract__message_unread
 msgid "If checked new messages require your attention."
-msgstr "Si está marcado, hay nuevos mensajes que requieren su atención"
+msgstr "Si está marcada los mensajes nuevos requieren su atención."
 
 #. module: project_contracts
 #: model:ir.model.fields,help:project_contracts.field_project_contract__message_needaction
 msgid "If checked, new messages require your attention."
-msgstr "Si está marcado, hay nuevos mensajes que requieren su atención."
+msgstr "Si está marcada, los mensajes nuevos requieren su atención."
 
 #. module: project_contracts
 #: model:ir.model.fields,help:project_contracts.field_project_contract__message_has_error
 msgid "If checked, some messages have a delivery error."
-msgstr "Si se encuentra marcado, algunos mensajes tienen error de envío."
+msgstr "Si está marcada, algunos mensajes tienen un error de entrega."
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/project_contract.py:80
@@ -427,7 +418,7 @@ msgstr "Facturas"
 #. module: project_contracts
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract__message_is_follower
 msgid "Is Follower"
-msgstr "Es un seguidor"
+msgstr "Es seguidor"
 
 #. module: project_contracts
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract____last_update
@@ -437,41 +428,43 @@ msgstr "Última modificación en"
 #. module: project_contracts
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract__write_uid
 msgid "Last Updated by"
-msgstr "Última actualización por"
+msgstr "Última actulización por"
 
 #. module: project_contracts
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract__write_date
 msgid "Last Updated on"
-msgstr "Última actualización el"
+msgstr "Última actulización en"
 
 #. module: project_contracts
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract__message_main_attachment_id
 msgid "Main Attachment"
-msgstr "Adjuntos principales"
+msgstr "Archivo adjunto principal"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/project_contract.py:76
+#: model:ir.model.fields,field_description:project_contracts.field_project_contract__attachment_ids
 #, python-format
 msgid "Main Attachments"
-msgstr "Principales datos adjuntos"
+msgstr "Archivos adjuntos principales"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/project_contract.py:35
+#: model:ir.model.fields,field_description:project_contracts.field_project_contract__manager_id
 #, python-format
 msgid "Manager"
-msgstr "Responsable"
+msgstr "Director"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/project_contract.py:55
 #: model:ir.model.fields,help:project_contracts.field_project_contract__quantity_max
 #, python-format
 msgid "Maximum time to work on the project."
-msgstr "Máximo tiempo para trabajar en el proyecto."
+msgstr "Tiempo máximo para trabajar en un proyecto"
 
 #. module: project_contracts
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract__message_has_error
 msgid "Message Delivery error"
-msgstr "Error de Envío de Mensaje"
+msgstr "Mensaje de error de entrega"
 
 #. module: project_contracts
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract__message_ids
@@ -481,7 +474,7 @@ msgstr "Mensajes"
 #. module: project_contracts
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract__activity_date_deadline
 msgid "Next Activity Deadline"
-msgstr "Siguiente plazo de actividad"
+msgstr "Siguiente fecha límite de la actividad"
 
 #. module: project_contracts
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract__activity_summary
@@ -499,7 +492,7 @@ msgstr "Siguiente tipo de actividad"
 #: model:ir.model.fields,field_description:project_contracts.field_res_users__contract_count
 #, python-format
 msgid "Number Contracts"
-msgstr "Níumero de contratos"
+msgstr "Número de contratos"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/project_contract.py:89
@@ -526,27 +519,27 @@ msgstr "Número de mensajes que requieren una acción"
 #. module: project_contracts
 #: model:ir.model.fields,help:project_contracts.field_project_contract__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr "Número de mensajes con error de envío"
+msgstr "Número de mensajes con error de entrega"
 
 #. module: project_contracts
 #: model:ir.model.fields,help:project_contracts.field_project_contract__message_unread_counter
 msgid "Number of unread messages"
-msgstr "Número de mensajes no leidos"
+msgstr "Número de mensajes no leídos"
 
 #. module: project_contracts
 #: selection:project.contract,activity_state:0
 msgid "Overdue"
-msgstr "Vencimiento"
+msgstr "Atrasado"
 
 #. module: project_contracts
 #: model_terms:ir.ui.view,arch_db:project_contracts.view_form_project_contract
 msgid "Para renovar"
-msgstr ""
+msgstr "Para renovar"
 
 #. module: project_contracts
 #: model_terms:ir.ui.view,arch_db:project_contracts.view_search_project_contract
 msgid "Partner"
-msgstr "Empresa"
+msgstr "Socio"
 
 #. module: project_contracts
 #: model_terms:ir.ui.view,arch_db:project_contracts.view_search_project_contract
@@ -556,17 +549,12 @@ msgstr "Contratos pendientes"
 #. module: project_contracts
 #: selection:project.contract,activity_state:0
 msgid "Planned"
-msgstr "Planificado"
-
-#. module: project_contracts
-#: model:ir.model.fields,field_description:project_contracts.field_project_contract__attachment_ids
-msgid "Principales datos adjuntos"
-msgstr ""
+msgstr "Planeado"
 
 #. module: project_contracts
 #: model:ir.model,name:project_contracts.model_product_category
 msgid "Product Category"
-msgstr "Categoría del producto"
+msgstr "Categoría de producto"
 
 #. module: project_contracts
 #: model:ir.model,name:project_contracts.model_project_project
@@ -578,7 +566,7 @@ msgstr "Proyecto"
 #: model:ir.cron,cron_name:project_contracts.project_contract_cron
 #: model:ir.cron,name:project_contracts.project_contract_cron
 msgid "Project Contract: Review state"
-msgstr "Contrato del proyecto: Estado de revisión "
+msgstr "Contratos de proyecto: Revisar estado"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/res_users.py:15
@@ -591,19 +579,16 @@ msgstr "Contratos de proyecto"
 #. module: project_contracts
 #: model:mail.template,subject:project_contracts.project_contract_cron_email_template
 msgid "Project contract expiration reminder ${user.company_id.name}"
-msgstr "Recordatorio de vencimiento del contrato del proyecto ${user.company_id.name}"
+msgstr ""
+"Recordatorio de vencimiento del contrato del proyecto ${user.company_id.name}"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/project_contract.py:30
+#: model:ir.model.fields,field_description:project_contracts.field_project_contract__project_ids
 #: model_terms:ir.ui.view,arch_db:project_contracts.view_form_project_contract
 #, python-format
 msgid "Projects"
 msgstr "Proyectos"
-
-#. module: project_contracts
-#: model:ir.model.fields,field_description:project_contracts.field_project_contract__project_ids
-msgid "Proyectos"
-msgstr ""
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/project_contract.py:66
@@ -614,24 +599,15 @@ msgstr ""
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/project_contract.py:40
+#: model:ir.model.fields,field_description:project_contracts.field_project_contract__reference
 #, python-format
 msgid "Reference"
 msgstr "Referencia"
 
 #. module: project_contracts
-#: model:ir.model.fields,field_description:project_contracts.field_project_contract__reference
-msgid "Referencia"
-msgstr ""
-
-#. module: project_contracts
-#: model:ir.model.fields,field_description:project_contracts.field_project_contract__manager_id
-msgid "Responsable"
-msgstr ""
-
-#. module: project_contracts
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract__activity_user_id
 msgid "Responsible User"
-msgstr "Usuario responsable"
+msgstr "Usuario responsabel"
 
 #. module: project_contracts
 #: model_terms:ir.ui.view,arch_db:project_contracts.view_search_project_contract
@@ -653,9 +629,9 @@ msgid ""
 "Planned: Future activities."
 msgstr ""
 "Estado basado en actividades\n"
-"Vencida: la fecha tope ya ha pasado\n"
-"Hoy: La fecha tope es hoy\n"
-"Planificada: futuras actividades."
+"Atrasado: La fecha de vencimiento ya ha pasado\n"
+"Hoy: La fecha de la actividad es hoy\n"
+"Planeado: Futuras actividades."
 
 #. module: project_contracts
 #: model:ir.model,name:project_contracts.model_project_task
@@ -665,7 +641,7 @@ msgstr "Tarea"
 #. module: project_contracts
 #: model_terms:ir.ui.view,arch_db:project_contracts.view_form_project_contract
 msgid "Task Stage"
-msgstr "Etapa de la tarea"
+msgstr "Etapa tareas"
 
 #. module: project_contracts
 #: model_terms:ir.ui.view,arch_db:project_contracts.view_form_project_contract
@@ -682,7 +658,7 @@ msgstr "Para renovar"
 #: selection:project.contract,state:0
 #, python-format
 msgid "To renew"
-msgstr "Para renvoar"
+msgstr "Para renovar"
 
 #. module: project_contracts
 #: selection:project.contract,activity_state:0
@@ -699,12 +675,12 @@ msgstr "Unidad de prepago"
 #. module: project_contracts
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract__message_unread
 msgid "Unread Messages"
-msgstr "Mensajes por leer"
+msgstr "Mensajes no leídos"
 
 #. module: project_contracts
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract__message_unread_counter
 msgid "Unread Messages Counter"
-msgstr "Contador de mensajes sin leer"
+msgstr "Contador de mensajes no leídos"
 
 #. module: project_contracts
 #: model:ir.model,name:project_contracts.model_res_users
@@ -719,7 +695,7 @@ msgstr "Mensajes del sitio web"
 #. module: project_contracts
 #: model:ir.model.fields,help:project_contracts.field_project_contract__website_message_ids
 msgid "Website communication history"
-msgstr "Historial de comunicaciones del sitio web"
+msgstr "Historial de comunicación del sitio web"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/project_contract.py:97
@@ -731,9 +707,12 @@ msgstr "No se puede borrar un contrato! Intenta cancelarlo antes."
 #: model_terms:ir.actions.act_window,help:project_contracts.act_hr_timesheet_line_by_project_contract
 msgid ""
 "You can register and track your workings hours by project every\n"
-"            day. Every time spent on a project will become a cost and can be re-invoiced to\n"
+"            day. Every time spent on a project will become a cost and can be "
+"re-invoiced to\n"
 "            customers if required."
 msgstr ""
-"Puede registrar y hacer un seguimiento de sus horas de trabajo por proyecto todos los\n"
-"\tdías. Cada tiempo invertido en un proyecto se convertirá en un coste y puede volver a facturarse a los\n"
+"Puede registrar y hacer un seguimiento de sus horas de trabajo por proyecto "
+"todos los\n"
+"\tdías. Cada tiempo invertido en un proyecto se convertirá en un coste y "
+"puede volver a facturarse a los\n"
 "\t clientes si es necesario."

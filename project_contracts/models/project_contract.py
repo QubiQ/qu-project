@@ -116,11 +116,11 @@ class ProjectContract(models.Model):
         invoice_ids = []
         for sel in self:
             invoice_ids = self.env['account.invoice'].search([
-                    ('account_analytic_ids', 'in',
-                        sel.project_ids.mapped('analytic_account_id').ids),
-                    ('partner_id', '=', sel.partner_id.name),
-                    ('company_id', '=', sel.company_id.name)
-                ]).ids
+                ('account_analytic_ids', 'in',
+                    sel.project_ids.mapped('analytic_account_id').ids),
+                ('partner_id', '=', sel.partner_id.name),
+                ('company_id', '=', sel.company_id.name)
+            ]).ids
         tree_view = self.env.ref('account.invoice_tree')
         form_view = self.env.ref('account.invoice_form')
         return {

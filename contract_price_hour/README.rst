@@ -18,13 +18,7 @@ You only have to install the module.
 Configuration
 =============
 
-To use this module you should have the checkbox *contract hours* of a product category activated:
-
-#. Go to inventory.
-#. Go to the tab configuration and click on product categories.
-#. Then you have to click on the category you want and select the check box called *contract hours*.
-
-The products with the checkbox activated in the product category will be recognized in the contracts.
+No need to do anything.
 
 
 Usage
