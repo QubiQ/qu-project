@@ -23,7 +23,7 @@ class ResPartner(models.Model):
             contract_count = 0
             if sel.project_contract_ids:
                 contract_count = len(self.env['project.contract'].search([
-                    ('partner_id', '=', sel.name)
+                    ('partner_id', '=', sel.id)
                 ]))
             sel.contract_count = contract_count
 
