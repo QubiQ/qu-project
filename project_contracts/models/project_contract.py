@@ -106,8 +106,8 @@ class ProjectContract(models.Model):
                 invoice_count = len(self.env['account.invoice'].search([
                     ('account_analytic_ids', 'in',
                         sel.project_ids.mapped('analytic_account_id').ids),
-                    ('partner_id', '=', sel.partner_id.name),
-                    ('company_id', '=', sel.company_id.name)
+                    ('partner_id', '=', sel.partner_id.id),
+                    ('company_id', '=', sel.company_id.id)
                 ]))
             sel.invoice_count = invoice_count
 
@@ -118,8 +118,8 @@ class ProjectContract(models.Model):
             invoice_ids = self.env['account.invoice'].search([
                 ('account_analytic_ids', 'in',
                     sel.project_ids.mapped('analytic_account_id').ids),
-                ('partner_id', '=', sel.partner_id.name),
-                ('company_id', '=', sel.company_id.name)
+                ('partner_id', '=', sel.partner_id.id),
+                ('company_id', '=', sel.company_id.id)
             ]).ids
         tree_view = self.env.ref('account.invoice_tree')
         form_view = self.env.ref('account.invoice_form')
