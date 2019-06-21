@@ -23,8 +23,13 @@ class AccountAnalyticLine(models.Model):
     )
     billable = fields.Boolean(
         string=_('Billable'),
-        default=True
+        default=lambda self: self._check_billable()
     )
+
+    @api.model
+    def _check_billable(self):
+        return 'billable' == self.env['project.project'].browse(
+                self._context['default_project_id']).type_project
 
     @api.multi
     @api.constrains('account_id')
