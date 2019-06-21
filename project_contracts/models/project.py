@@ -19,5 +19,8 @@ class ProjectProject(models.Model):
         string=_('Type of Project'),
         required=True,
         default='billable',
-        selection=[('billable', _('Billable')), ('no_billable', _('No Billable'))]
+        selection=[
+            ('billable', _('Billable')),
+            ('no_billable', _('No Billable'))
+        ]
     )
