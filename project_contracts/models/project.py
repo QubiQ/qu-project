@@ -14,3 +14,10 @@ class ProjectProject(models.Model):
         string=_('Contract'),
         copy=False,
     )
+
+    type_project = fields.Selection(
+        string=_('Type of Project'),
+        required=True,
+        default='billable',
+        selection=[('billable', _('Billable')), ('no_billable', _('No Billable'))]
+    )
