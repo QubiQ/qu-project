@@ -28,11 +28,17 @@ class AccountAnalyticLine(models.Model):
 
     @api.model
     def _check_billable(self):
-        if self._context['default_project_id']:
-            return 'billable' == self.env['project.project'].browse(
-                    self._context['default_project_id']).type_project
-        else:
-            return False
+        is_billable = True
+        if self._context.get('default_project_id', None):
+            is_billable = 'billable' == self.env['project.project'].browse(
+                self._context['default_project_id']).type_project
+        elif self._context.get('invoice', None):
+            if self._context['invoice'][0]\
+                    .account_analytic_ids[0].project_ids:
+                is_billable = 'billable' == self.env['account.invoice'].browse(
+                    self._context['invoice'][0].id)\
+                    .account_analytic_ids[0].project_ids[0].type_project
+        return is_billable
 
     @api.multi
     @api.constrains('account_id')
