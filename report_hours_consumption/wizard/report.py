@@ -276,8 +276,12 @@ class ReportHoursConsumption(models.TransientModel):
             col += 1
             resource = ''
             if kind == 'Bolsa':
-                resource =\
-                    aal.move_id.invoice_id.user_id.employee_ids[0].name or ''
+                if aal.move_id.invoice_id.user_id.employee_ids:
+                    resource =\
+                        aal.move_id.invoice_id.user_id.employee_ids[0].name or ''
+                else:
+                    resource =\
+                        aal.move_id.invoice_id.user_id.name or ''
             else:
                 resource = aal.employee_id.name or ''
             ws[col_list[col]+str(line)] = resource
