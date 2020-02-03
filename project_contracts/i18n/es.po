@@ -1,26 +1,23 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* project_contracts
+#	* project_contracts
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-18 09:58+0000\n"
-"PO-Revision-Date: 2019-06-18 11:59+0200\n"
+"POT-Creation-Date: 2020-02-03 08:03+0000\n"
+"PO-Revision-Date: 2020-02-03 08:03+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-"Language: es\n"
-"X-Generator: Poedit 1.8.7.1\n"
 
 #. module: project_contracts
 #: model:mail.template,body_html:project_contracts.project_contract_cron_email_template
-msgid ""
-"\n"
+msgid "\n"
 "Hello ${object.name},\n"
 "<br/><br/>\n"
 "    <h2>The following contracts expired: </h2>\n"
@@ -63,19 +60,18 @@ msgid ""
 "Odoo Automatic Email\n"
 "</pre>\n"
 "            "
-msgstr ""
-"\n"
+msgstr "\n"
 "Hola ${object.name},\n"
 "<br/><br/>\n"
 "    <h2>Los siguientes contratos han expirado: </h2>\n"
 "<br/><br/>\n"
 "<table cellspacing=\"1\" border=\"1\" cellpadding=\"4\">\n"
 "    <tr>\n"
-"        <th>Customer</th>\n"
-"        <th>Contract</th>\n"
-"        <th>Dates</th>\n"
-"        <th>Prepaid Units</th>\n"
-"        <th>Contact</th>\n"
+"        <th>Cliente</th>\n"
+"        <th>Contrato</th>\n"
+"        <th>Fechas</th>\n"
+"        <th>Unidades de prepago</th>\n"
+"        <th>Contacto</th>\n"
 "    </tr>\n"
 "    % for contract in object.project_contracts_ids:\n"
 "        <tr>\n"
@@ -93,10 +89,10 @@ msgstr ""
 "</table>\n"
 "\n"
 "<p>\n"
-"     Puede verificar todos los contratos a renovar utilizando el menú:\n"
+"    Usted puede revisar todos los contratos pendientes usando el punto de menú:\n"
 "</p>\n"
 "<ul>\n"
-"    <li>Project / Contracts / Contracts</li>\n"
+"    <li>Proyecto / Contratos / Contratos</li>\n"
 "</ul>\n"
 "<p>\n"
 "    Gracias,\n"
@@ -105,30 +101,31 @@ msgstr ""
 "<pre>\n"
 "--\n"
 "Odoo Automatic Email\n"
-"</pre>"
+"</pre>\n"
+"            "
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/project_contract.py:127
 #, python-format
 msgid "Account Invoice"
-msgstr "Factura de la cuenta"
+msgstr "Account Invoice"
 
 #. module: project_contracts
 #: model:ir.ui.view,arch_db:project_contracts.view_search_project_contract
 msgid "Account Manager"
-msgstr "Account Manager"
+msgstr "Gestor contable"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/account_invoice.py:15
 #: model:ir.model.fields,field_description:project_contracts.field_account_invoice_account_analytic_ids
 #, python-format
 msgid "Account analytic"
-msgstr "Análisis de cuentas"
+msgstr "Account analytic"
 
 #. module: project_contracts
 #: model:ir.actions.act_window,name:project_contracts.act_hr_timesheet_line_by_project_contract
 msgid "Activities contract"
-msgstr "Actividades de contrato"
+msgstr "Imputaciones sobre contratos"
 
 #. module: project_contracts
 #: model:ir.model,name:project_contracts.model_account_analytic_line
@@ -140,33 +137,34 @@ msgstr "Línea analítica"
 #: model:ir.model.fields,help:project_contracts.field_project_contract_attachment_ids
 #, python-format
 msgid "Attachment that don't come from message."
-msgstr "Archivos adjuntos que no provienen de un mensaje."
+msgstr "Adjunto que no procede de un mensaje."
 
 #. module: project_contracts
-#: code:addons/project_contracts/models/project_task.py:13
+#: code:addons/project_contracts/models/project_task.py:14
 #: model:ir.model.fields,field_description:project_contracts.field_project_task_beyond_scope
 #, python-format
 msgid "Beyond Scope"
-msgstr "Más allá del alcance"
+msgstr "Beyond Scope"
 
 #. module: project_contracts
-#: code:addons/project_contracts/models/account_analytic_line.py:26
+#: code:addons/project_contracts/models/account_analytic_line.py:25
 #: code:addons/project_contracts/models/project.py:22
 #: model:ir.model.fields,field_description:project_contracts.field_account_analytic_line_billable
+#: selection:project.project,type_project:0
 #, python-format
 msgid "Billable"
 msgstr "Facturable"
 
 #. module: project_contracts
-#: code:addons/project_contracts/models/account_analytic_line.py:57
-#, python-format
-msgid "Can't create the line, please renew the contract."
-msgstr "No se puede crear la línea, por favor renueve el contrato."
+#: model:ir.model.fields,field_description:project_contracts.field_project_task_billable_hours
+msgid "Billable hours"
+msgstr "Horas Facturables"
 
 #. module: project_contracts
-#: selection:project.contract,state:0
-msgid "Cancelado"
-msgstr "Cancelado"
+#: code:addons/project_contracts/models/account_analytic_line.py:49
+#, python-format
+msgid "Can't create the line, please renew the contract."
+msgstr "No se puede crear la línea, por favor, renueve el contrato."
 
 #. module: project_contracts
 #: model:ir.ui.view,arch_db:project_contracts.view_form_project_contract
@@ -176,32 +174,28 @@ msgstr "Cancelar contrato"
 #. module: project_contracts
 #: code:addons/project_contracts/models/project_contract.py:83
 #: model:ir.ui.view,arch_db:project_contracts.view_search_project_contract
+#: selection:project.contract,state:0
 #, python-format
 msgid "Cancelled"
-msgstr "Cancelado"
+msgstr "Cancelada"
 
 #. module: project_contracts
 #: model:ir.ui.view,arch_db:project_contracts.view_search_project_contract
 msgid "Cancelled contracts"
-msgstr "Cancelled contracts"
+msgstr "Contratos cancelados"
 
 #. module: project_contracts
-#: code:addons/project_contracts/models/account_analytic_line.py:23
+#: code:addons/project_contracts/models/account_analytic_line.py:22
 #: model:ir.model.fields,field_description:project_contracts.field_account_analytic_line_contract_hours
 #, python-format
 msgid "Category Hours"
-msgstr "Categoría de horas"
+msgstr "Categoría horas"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/product_category.py:15
 #, python-format
 msgid "Category of product for the maximum hours to contracts."
-msgstr "Categoría de producto para las horas máximas de los contratos."
-
-#. module: project_contracts
-#: selection:project.contract,state:0
-msgid "Cerrado"
-msgstr "Cerrado"
+msgstr "Categoría del producto para el máximo de horas de contratos."
 
 #. module: project_contracts
 #: model:ir.ui.view,arch_db:project_contracts.view_form_project_contract
@@ -211,7 +205,7 @@ msgstr "Cerrar contrato"
 #. module: project_contracts
 #: model:ir.actions.act_window,help:project_contracts.action_project_contracts
 msgid "Click to add a Contract."
-msgstr "Click to add a Contract."
+msgstr "Haga click aquí para agregar nuevos contratos."
 
 #. module: project_contracts
 #: model:ir.actions.act_window,help:project_contracts.act_hr_timesheet_line_by_project_contract
@@ -221,6 +215,7 @@ msgstr "Haga clic para registrar las actividades."
 #. module: project_contracts
 #: code:addons/project_contracts/models/project_contract.py:82
 #: model:ir.ui.view,arch_db:project_contracts.view_search_project_contract
+#: selection:project.contract,state:0
 #, python-format
 msgid "Closed"
 msgstr "Cerrado"
@@ -228,36 +223,37 @@ msgstr "Cerrado"
 #. module: project_contracts
 #: model:ir.ui.view,arch_db:project_contracts.view_search_project_contract
 msgid "Closed contracts"
-msgstr "Closed contracts"
+msgstr "Contratos cerrados"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/project_contract.py:71
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract_company_id
 #, python-format
 msgid "Company"
-msgstr "Compañia"
+msgstr "Compañía"
 
 #. module: project_contracts
 #: model:ir.model,name:project_contracts.model_res_partner
 msgid "Contact"
-msgstr "Contacto"
+msgstr "Contact"
 
 #. module: project_contracts
-#: code:addons/project_contracts/models/account_analytic_line.py:18
+#: code:addons/project_contracts/models/account_analytic_line.py:17
 #: code:addons/project_contracts/models/project.py:14
 #: code:addons/project_contracts/models/res_partner.py:36
 #: model:ir.model.fields,field_description:project_contracts.field_account_analytic_line_contract_id
+#: model:ir.model.fields,field_description:project_contracts.field_project_project_contract_id
 #: model:ir.ui.view,arch_db:project_contracts.view_tree_project_contract
 #, python-format
 msgid "Contract"
-msgstr "Contracto"
+msgstr "Contrato"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/product_category.py:13
 #: model:ir.model.fields,field_description:project_contracts.field_product_category_contract_hours
 #, python-format
 msgid "Contract Hours"
-msgstr "Horas del contrato"
+msgstr "Contrato horas"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/project_contract.py:16
@@ -265,12 +261,7 @@ msgstr "Horas del contrato"
 #: model:ir.ui.view,arch_db:project_contracts.view_form_project_contract
 #, python-format
 msgid "Contract Name"
-msgstr "Nombre del contrato"
-
-#. module: project_contracts
-#: model:ir.model.fields,field_description:project_contracts.field_project_project_contract_id
-msgid "Contracto"
-msgstr "Contracto"
+msgstr "Nombre de contrato"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/res_partner.py:15
@@ -289,7 +280,7 @@ msgstr "Contratos"
 #. module: project_contracts
 #: model:ir.ui.view,arch_db:project_contracts.view_search_project_contract
 msgid "Contracts in progress"
-msgstr "Contracts in progress"
+msgstr "Contratos en progreso"
 
 #. module: project_contracts
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract_create_uid
@@ -313,34 +304,25 @@ msgstr "Cliente"
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract_date_end
 #, python-format
 msgid "Date End"
-msgstr "Fecha de fin"
+msgstr "Fecha final"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/project_contract.py:45
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract_date_start
 #, python-format
 msgid "Date Start"
-msgstr "Fecha de inicio"
+msgstr "Fecha inicial"
 
 #. module: project_contracts
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract_display_name
+#: model:ir.model.fields,field_description:project_contracts.field_project_task_display_name
 msgid "Display Name"
-msgstr "Nombre mostrado"
-
-#. module: project_contracts
-#: selection:project.contract,state:0
-msgid "En Proceso"
-msgstr "En Proceso"
+msgstr "Display Name"
 
 #. module: project_contracts
 #: model:ir.ui.view,arch_db:project_contracts.view_form_project_contract
 msgid "Establecer a 'En progreso'"
 msgstr "Establecer a 'En progreso'"
-
-#. module: project_contracts
-#: selection:project.project,type_project:0
-msgid "Facturable"
-msgstr "Facturable"
 
 #. module: project_contracts
 #: model:ir.ui.view,arch_db:project_contracts.view_search_project_contract
@@ -364,14 +346,15 @@ msgstr "Horas restantes"
 #. module: project_contracts
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract_id
 msgid "ID"
-msgstr "ID (identificación)"
+msgstr "ID"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/project_contract.py:80
 #: model:ir.ui.view,arch_db:project_contracts.view_search_project_contract
+#: selection:project.contract,state:0
 #, python-format
 msgid "In Progress"
-msgstr "En progreso"
+msgstr "En proceso"
 
 #. module: project_contracts
 #: model:ir.model,name:project_contracts.model_account_invoice
@@ -385,8 +368,9 @@ msgstr "Facturas"
 
 #. module: project_contracts
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract___last_update
+#: model:ir.model.fields,field_description:project_contracts.field_project_task___last_update
 msgid "Last Modified on"
-msgstr "Última modificación en"
+msgstr "Last Modified on"
 
 #. module: project_contracts
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract_write_uid
@@ -403,21 +387,21 @@ msgstr "Última actualización en"
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract_attachment_ids
 #, python-format
 msgid "Main Attachments"
-msgstr "Archivos adjuntos principales"
+msgstr "Archivos adjuntos"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/project_contract.py:35
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract_manager_id
 #, python-format
 msgid "Manager"
-msgstr "Director"
+msgstr "Gerente"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/project_contract.py:55
 #: model:ir.model.fields,help:project_contracts.field_project_contract_quantity_max
 #, python-format
 msgid "Maximum time to work on the project."
-msgstr "Tiempo máximo para trabajar en un proyecto"
+msgstr "Tiempo máximo para trabajar en el proyecto."
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/project.py:22
@@ -425,6 +409,11 @@ msgstr "Tiempo máximo para trabajar en un proyecto"
 #, python-format
 msgid "No Billable"
 msgstr "No Facturable"
+
+#. module: project_contracts
+#: model:ir.model.fields,field_description:project_contracts.field_project_task_no_billable_hours
+msgid "No billable hours"
+msgstr "Horas No Facturables"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/res_partner.py:11
@@ -439,11 +428,10 @@ msgstr "Número de contratos"
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract_invoice_count
 #, python-format
 msgid "Number Invoices"
-msgstr "Número de facturas"
+msgstr "Number Invoices"
 
 #. module: project_contracts
 #: model:ir.ui.view,arch_db:project_contracts.view_form_project_contract
-#: selection:project.contract,state:0
 msgid "Para renovar"
 msgstr "Para renovar"
 
@@ -455,7 +443,7 @@ msgstr "Empresa"
 #. module: project_contracts
 #: model:ir.ui.view,arch_db:project_contracts.view_search_project_contract
 msgid "Pending contracts"
-msgstr "Pending contracts"
+msgstr "Contratos pendientes"
 
 #. module: project_contracts
 #: model:ir.model,name:project_contracts.model_product_category
@@ -472,7 +460,7 @@ msgstr "Proyecto"
 #: model:ir.cron,cron_name:project_contracts.project_contract_cron
 #: model:ir.cron,name:project_contracts.project_contract_cron
 msgid "Project Contract: Review state"
-msgstr "Contratos de proyecto: Revisar estado"
+msgstr "Project Contract: Review state"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/res_users.py:15
@@ -480,7 +468,7 @@ msgstr "Contratos de proyecto: Revisar estado"
 #: model:ir.model.fields,field_description:project_contracts.field_res_users_project_contracts_ids
 #, python-format
 msgid "Project Contracts"
-msgstr "Contratos de proyecto"
+msgstr "Contratos de proyectos"
 
 #. module: project_contracts
 #: model:mail.template,subject:project_contracts.project_contract_cron_email_template
@@ -510,15 +498,30 @@ msgid "Reference"
 msgstr "Referencia"
 
 #. module: project_contracts
+#: model:ir.model.fields,field_description:project_contracts.field_project_task_remaining_billable_hours
+msgid "Remaining Billable Hours"
+msgstr "Horas Facturables Restantes"
+
+#. module: project_contracts
 #: model:ir.ui.view,arch_db:project_contracts.view_search_project_contract
 msgid "Start Month"
-msgstr "Start Month"
+msgstr "Mes de inicio"
 
 #. module: project_contracts
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract_state
 #: model:ir.ui.view,arch_db:project_contracts.view_search_project_contract
 msgid "Status"
 msgstr "Estado"
+
+#. module: project_contracts
+#: model:ir.model.fields,field_description:project_contracts.field_project_task_billable_child_hours
+msgid "SubTask Billable Hours"
+msgstr "Horas SubTareas Facturables"
+
+#. module: project_contracts
+#: model:ir.model.fields,field_description:project_contracts.field_project_task_no_billable_child_hours
+msgid "SubTask No Billable Hours"
+msgstr "Horas SubTareas No Facturables"
 
 #. module: project_contracts
 #: model:ir.model,name:project_contracts.model_project_task
@@ -538,13 +541,19 @@ msgstr "Partes de horas"
 #. module: project_contracts
 #: model:ir.ui.view,arch_db:project_contracts.view_search_project_contract
 msgid "To Renew"
-msgstr "To Renew"
+msgstr "Para renovar"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/project_contract.py:81
+#: selection:project.contract,state:0
 #, python-format
 msgid "To renew"
 msgstr "Para renovar"
+
+#. module: project_contracts
+#: model:ir.model.fields,field_description:project_contracts.field_project_task_total_billable_hours_spent
+msgid "Total Billable Hours"
+msgstr "Horas Facturables Totales"
 
 #. module: project_contracts
 #: code:addons/project_contracts/models/project.py:19
@@ -558,7 +567,7 @@ msgstr "Type of Project"
 #: model:ir.model.fields,field_description:project_contracts.field_project_contract_quantity_max
 #, python-format
 msgid "Unit prepayment"
-msgstr "Unidad de prepago"
+msgstr "Prepago de la unidad"
 
 #. module: project_contracts
 #: model:ir.model,name:project_contracts.model_res_users
@@ -569,15 +578,13 @@ msgstr "Usuarios"
 #: code:addons/project_contracts/models/project_contract.py:97
 #, python-format
 msgid "You can not delete a contract! Try to cancel it before."
-msgstr "No se puede borrar un contrato! Intenta cancelarlo antes."
+msgstr "¡No se puede borrar el contrato! Intenta de cancelarlo antes."
 
 #. module: project_contracts
 #: model:ir.actions.act_window,help:project_contracts.act_hr_timesheet_line_by_project_contract
-msgid ""
-"You can register and track your workings hours by project every\n"
+msgid "You can register and track your workings hours by project every\n"
 "            day. Every time spent on a project will become a cost and can be re-invoiced to\n"
 "            customers if required."
-msgstr ""
-"You can register and track your workings hours by project every\n"
-"            day. Every time spent on a project will become a cost and can be re-invoiced to\n"
-"            customers if required."
+msgstr "Puede registrar y rastrear sus horas de funcionamiento por día de every\n"
+" de proyecto. Cada vez que gasta en un proyecto se convertirá en un costo y puede ser renovadas facturado a clientes si es necesario."
+
