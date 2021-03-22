@@ -18,33 +18,29 @@ class ProjectTask(models.Model):
     billable_hours = fields.Float(compute='_compute_project_billable_worked_hours',
         readonly=True, string='Billable hours')
 
-    no_billable_hours = fields.Float(compute='_compute_project_billable_worked_hours', 
+    no_billable_hours = fields.Float(compute='_compute_project_billable_worked_hours',
         readonly=True, string='No billable hours')
 
     billable_child_hours = fields.Float(compute='_compute_project_billable_worked_hours',
         readonly=True, string='SubTask Billable Hours')
 
-    no_billable_child_hours = fields.Float(compute='_compute_project_billable_worked_hours', 
+    no_billable_child_hours = fields.Float(compute='_compute_project_billable_worked_hours',
         readonly=True, string='SubTask No Billable Hours')
 
-    remaining_billable_hours = fields.Float(compute='_compute_project_billable_worked_hours', 
+    remaining_billable_hours = fields.Float(compute='_compute_project_billable_worked_hours',
         readonly=True, string='Remaining Billable Hours')
 
-    total_billable_hours_spent = fields.Float(compute='_compute_project_billable_worked_hours', 
+    total_billable_hours_spent = fields.Float(compute='_compute_project_billable_worked_hours',
         readonly=True, string='Total Billable Hours')
 
     type_project = fields.Selection(related='project_id.type_project')
-    
 
-
-
-    @api.multi
     def _compute_project_billable_worked_hours(self):
-        for sel in self:    
+        for sel in self:
             sel.billable_hours = 0
-            sel.no_billable_hours = 0  
+            sel.no_billable_hours = 0
             sel.billable_child_hours = 0
-            sel.no_billable_child_hours = 0       
+            sel.no_billable_child_hours = 0
             for line in sel.timesheet_ids:
                 if line.billable:
                     sel.billable_hours += line.unit_amount
@@ -60,5 +56,5 @@ class ProjectTask(models.Model):
 
             sel.total_billable_hours_spent = sel.billable_child_hours + sel.billable_hours
             sel.remaining_billable_hours = sel.planned_hours - sel.total_billable_hours_spent
-            
+
 

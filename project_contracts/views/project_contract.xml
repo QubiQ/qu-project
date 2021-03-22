@@ -4,20 +4,19 @@
     <record id="act_hr_timesheet_line_by_project_contract" model="ir.actions.act_window">
         <field name="name">Activities contract</field>
         <field name="res_model">account.analytic.line</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[('contract_id', '=', active_id)]</field>
         <field name="help" type="html">
-          <p class="oe_view_nocontent_create">
-            Click to record activities.
-          </p><p>
-            You can register and track your workings hours by project every
-            day. Every time spent on a project will become a cost and can be re-invoiced to
-            customers if required.
-          </p>
+            <p class="oe_view_nocontent_create">
+                Click to record activities.
+            </p>
+            <p>
+                You can register and track your workings hours by project every
+                day. Every time spent on a project will become a cost and can be re-invoiced to
+                customers if required.
+            </p>
         </field>
     </record>
-
 
     <record id="view_search_project_contract" model="ir.ui.view">
         <field name="name">view.search.project.contract</field>
@@ -34,15 +33,14 @@
                 <filter name="cancelled" string="Cancelled" domain="[('state','=','cancelled')]" help="Cancelled contracts"/>
                 <separator/>
                 <group expand="0" string="Group By">
-                    <filter string="Status" domain="[]" context="{'group_by':'state'}"/>
-                    <filter string="Account Manager" domain="[]" context="{'group_by':'manager_id'}"/>
-                    <filter string="Partner" domain="[]" context="{'group_by':'partner_id'}"/>
-                    <filter string="Start Month" domain="[]" context="{'group_by' : 'date_start'}" />
+                    <filter string="Status" name="group_by_state" context="{'group_by':'state'}"/>
+                    <filter string="Account Manager" name="group_by_manager" context="{'group_by':'manager_id'}"/>
+                    <filter string="Partner" name="group_by_parner" context="{'group_by':'partner_id'}"/>
+                    <filter string="Start Month" name="group_by_date_start" context="{'group_by' : 'date_start'}" />
                 </group>
             </search>
         </field>
     </record>
-
 
     <record id="view_form_project_contract" model="ir.ui.view">
         <field name="name">view.form.project.contract</field>
@@ -58,14 +56,16 @@
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box" groups="base.group_user">
-                        <button class="oe_stat_button" name="invoice_projects"  type="object" icon="fa-money">
+                        <button class="oe_stat_button" name="invoice_projects" type="object" icon="fa-money">
                             <field string="Invoices" name="invoice_count" widget="statinfo" />
                         </button>
                         <button class="oe_stat_button" name="%(act_hr_timesheet_line_by_project_contract)d" type="action" icon="fa-calendar" string="Timesheets" groups="hr_timesheet.group_hr_timesheet_user"/>
                     </div>
                     <div class="oe_title">
                         <label class="oe_edit_only" for="name" string="Contract Name"/>
-                        <h1><field name="name"/></h1>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
                     </div>
                     <group>
                         <group>
@@ -101,7 +101,9 @@
         <field name="name">view.tree.project.contract</field>
         <field name="model">project.contract</field>
         <field name="arch" type="xml">
-            <tree string="Contract" colors="red:state=='pending';grey:state in ('cancelled','close');">
+            <tree string="Contract" 
+            decoration-danger="state == 'pending'"
+            decoration-muted="state in ('cancelled', 'close')">
                 <field name="name"/>
                 <field name="partner_id"/>
                 <field name="reference"/>
@@ -116,23 +118,22 @@
     <record id="action_project_contracts" model="ir.actions.act_window">
         <field name="name">Contracts</field>
         <field name="res_model">project.contract</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
-          <p class="oe_view_nocontent_create">
-            Click to add a Contract.
-          </p>
+            <p class="oe_view_nocontent_create">
+                Click to add a Contract.
+            </p>
         </field>
     </record>
 
     <menuitem id="menu_project_contracts"
-            parent="project.menu_main_pm"
-            sequence="99"
-            name="Contracts"
-            groups="project.group_project_manager,hr_timesheet.group_timesheet_manager,account.group_account_manager"/>
-	<menuitem id="submenu_project_contracts"
-            action="project_contracts.action_project_contracts"
-            parent="project_contracts.menu_project_contracts"
-            sequence="1"
-            groups="project.group_project_manager,hr_timesheet.group_timesheet_manager,account.group_account_manager"/>
+        parent="project.menu_main_pm"
+        sequence="99"
+        name="Contracts"
+        groups="project.group_project_manager,hr_timesheet.group_timesheet_manager,account.group_account_manager"/>
+    <menuitem id="submenu_project_contracts"
+        action="project_contracts.action_project_contracts"
+        parent="project_contracts.menu_project_contracts"
+        sequence="1"
+        groups="project.group_project_manager,hr_timesheet.group_timesheet_manager,account.group_account_manager"/>
 </odoo>

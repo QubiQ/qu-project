@@ -19,7 +19,7 @@ Configuration
 =============
 
 In the category of products that contain the products used for the sale of contract hours, you must check the option 'Contract hours'.
-
+Be sure you have Analytic Account activated in Accounting -> Settings
 
 Usage
 =====

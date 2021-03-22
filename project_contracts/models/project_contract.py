@@ -20,7 +20,7 @@ class ProjectContract(models.Model):
     partner_id = fields.Many2one(
         'res.partner',
         string=_('Customer'),
-        domain="[('customer', '=', True), ('parent_id', '=', False)]",
+        domain="['|', ('company_id', '=', False),('company_id', '=', company_id)]",
         required=True,
         copy=False,
     )
@@ -90,7 +90,6 @@ class ProjectContract(models.Model):
         compute='_get_invoice_count'
     )
 
-    @api.multi
     def unlink(self):
         for order in self:
             if order.state != 'cancelled':
@@ -98,12 +97,11 @@ class ProjectContract(models.Model):
                                   ' Try to cancel it before.'))
         return super(ProjectContract, self).unlink()
 
-    @api.multi
     def _get_invoice_count(self):
         for sel in self:
             invoice_count = 0
             if sel.project_ids:
-                invoice_count = len(self.env['account.invoice'].search([
+                invoice_count = len(self.env['account.move'].search([
                     ('account_analytic_ids', 'in',
                         sel.project_ids.mapped('analytic_account_id').ids),
                     ('partner_id', '=', sel.partner_id.id),
@@ -111,30 +109,35 @@ class ProjectContract(models.Model):
                 ]))
             sel.invoice_count = invoice_count
 
-    @api.multi
     def invoice_projects(self):
         invoice_ids = []
         for sel in self:
-            invoice_ids = self.env['account.invoice'].search([
+            invoice_ids = self.env['account.move'].search([
                 ('account_analytic_ids', 'in',
                     sel.project_ids.mapped('analytic_account_id').ids),
                 ('partner_id', '=', sel.partner_id.id),
                 ('company_id', '=', sel.company_id.id)
             ]).ids
-        tree_view = self.env.ref('account.invoice_tree')
-        form_view = self.env.ref('account.invoice_form')
+        context = {'default_type': 'out_invoice',
+                   'default_partner_id': sel.partner_id.id}
+        journal_id = self.env['account.journal'].search(
+            [('type', '=', 'sale')], limit=1)
+        if journal_id:
+            context['default_journal_id'] = journal_id.id
+        tree_view = self.env.ref('account.view_invoice_tree')
+        form_view = self.env.ref('account.view_move_form')
         return {
             'name': _('Account Invoice'),
             'view_type': 'form',
             'view_mode': 'tree,form',
-            'res_model': 'account.invoice',
+            'res_model': 'account.move',
             'view_id': tree_view.id,
             'views': [(tree_view.id, 'tree'), (form_view.id, 'form')],
             'type': 'ir.actions.act_window',
+            'context': context,
             'domain': [('id', 'in', invoice_ids)],
         }
 
-    @api.multi
     def _get_quantity_max(self):
         for sel in self:
             sel.quantity_max = sum(
@@ -146,7 +149,6 @@ class ProjectContract(models.Model):
                     )]
                 )
 
-    @api.multi
     def _get_hours_quantity(self):
         for sel in self:
             sel.hours_quantity = sum(
@@ -159,7 +161,6 @@ class ProjectContract(models.Model):
                     )]
                 )
 
-    @api.multi
     def _get_remaining_hours(self):
         for sel in self:
             sel.remaining_hours = sel.quantity_max - sel.hours_quantity
@@ -183,19 +184,15 @@ class ProjectContract(models.Model):
         res = super(ProjectContract, self).create(vals)
         return res
 
-    @api.multi
     def set_pending(self):
         self.write({'state': 'pending'})
 
-    @api.multi
     def set_close(self):
         self.write({'state': 'close'})
 
-    @api.multi
     def set_open(self):
         self.write({'state': 'open'})
 
-    @api.multi
     def set_cancel(self):
         self.write({'state': 'cancelled'})
 

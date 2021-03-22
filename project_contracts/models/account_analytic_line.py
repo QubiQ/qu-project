@@ -35,12 +35,11 @@ class AccountAnalyticLine(models.Model):
         elif self._context.get('invoice', None):
             if self._context['invoice'][0]\
                     .account_analytic_ids[0].project_ids:
-                is_billable = 'billable' == self.env['account.invoice'].browse(
+                is_billable = 'billable' == self.env['account.move'].browse(
                     self._context['invoice'][0].id)\
                     .account_analytic_ids[0].project_ids[0].type_project
         return is_billable
 
-    @api.multi
     @api.constrains('account_id')
     def _check_contract(self):
         for sel in self:

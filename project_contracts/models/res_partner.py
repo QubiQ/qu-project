@@ -17,7 +17,6 @@ class ResPartner(models.Model):
         inverse_name='partner_id'
     )
 
-    @api.multi
     def _get_contract_count(self):
         for sel in self:
             contract_count = 0

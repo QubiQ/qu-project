@@ -6,8 +6,8 @@
 from odoo import models, fields, api, _
 
 
-class AccountInvoice(models.Model):
-    _inherit = 'account.invoice'
+class AccountMove(models.Model):
+    _inherit = 'account.move'
 
     account_analytic_ids = fields.Many2many(
         'account.analytic.account',
@@ -16,15 +16,8 @@ class AccountInvoice(models.Model):
         store=True
     )
 
-    @api.multi
-    @api.depends('invoice_line_ids.account_analytic_id')
+    @api.depends('invoice_line_ids.analytic_account_id')
     def _get_account_analytic_ids(self):
         for sel in self:
-            account_analytic_ids = set()
-            account_analytic_ids.update(
-                sel.invoice_line_ids.mapped('account_analytic_id').ids
-            )
-            sel.account_analytic_ids =\
-                self.env['account.analytic.account'].browse(
-                    list(account_analytic_ids)
-                )
+            sel.account_analytic_ids = sel.invoice_line_ids.\
+                mapped('analytic_account_id')
