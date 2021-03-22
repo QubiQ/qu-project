@@ -24,7 +24,6 @@
         <field name="name">Modify Followers</field>
         <field name="res_model">modify.followers.task.wizard</field>
         <field name="view_id" ref="modify_followers_task_wizard"/>
-        <field name="view_type">form</field>
         <field name="view_mode">form</field>
         <field name="type">ir.actions.act_window</field>
         <field name="target">new</field>

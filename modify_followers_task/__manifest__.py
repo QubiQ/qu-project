@@ -4,7 +4,7 @@
 {
     "name": "Modify Followers Task",
     "summary": "Modify list of followers from a project task",
-    "version": "11.0.1.0.0",
+    "version": "13.0.1.0.0",
     "category": "Project",
     "website": "https://www.qubiq.es",
     "author": "QubiQ, Odoo Community Association (OCA)",
