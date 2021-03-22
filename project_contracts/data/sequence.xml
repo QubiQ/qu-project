@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+		<record id="sequence_project_contract" model="ir.sequence">
+	        <field name="name">Sequence Project Contract</field>
+	        <field name="code">sequence.project.contract</field>
+	        <field name="prefix">PC/</field>
+	        <field name="padding">3</field>
+	        <field eval="1" name="number_next"/>
+	        <field eval="1" name="number_increment"/>
+	        <field eval="False" name="company_id"/>
+	    </record>
+</odoo>

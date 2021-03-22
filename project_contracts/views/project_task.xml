@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="project_task_contracts_form" model="ir.ui.view">
+        <field name="name">project.task.contracts.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <field name="date_deadline" position="after">
+                <field name="beyond_scope"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="project_task_timesheet_form" model="ir.ui.view">
+        <field name="name">project.task.timesheet.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="hr_timesheet.view_task_form2_inherited"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='unit_amount']" position="after">
+                <field name="billable"/>
+            </xpath>
+
+
+            <xpath expr="//page/group[last()]" position="after">
+                <field name="type_project" invisible="1"></field>
+                <group attrs="{'invisible' : [('type_project', '=', 'no_billable')]}">
+                    <group class="oe_subtotal_footer oe_right" name="tasks_hours" >
+                        <field name="billable_hours" widget="float_time"></field>
+                        <field name="no_billable_hours" widget="float_time"></field>
+                        <field name="effective_hours" class="oe_subtotal_footer_separator" widget="float_time" />      
+                    </group>
+                </group>
+                <group attrs="{'invisible' : ['|',('subtask_effective_hours', '=', 0.0),('type_project', '=', 'no_billable')]}">
+                    <group class="oe_subtotal_footer oe_right" name="subtasks" >
+                        <field name="billable_child_hours" widget="float_time"></field>
+                        <field name="no_billable_child_hours" widget="float_time"></field>       
+                        <field name="subtask_effective_hours" class="oe_subtotal_footer_separator"  widget="float_time" />    
+                    </group>
+                </group>
+                <group attrs="{'invisible' : [('type_project', '=', 'no_billable')]}">
+                    <group class="oe_subtotal_footer oe_right" name="total_hours">
+                        <field name="total_billable_hours_spent" widget="float_time" class="oe_subtotal_footer_separator" 
+                            attrs="{'invisible' : [('subtask_effective_hours', '=', 0.0)]}"  />
+                        <field name="total_hours_spent" widget="float_time" class="oe_subtotal_footer_separator" /> 
+                    </group>
+                </group>
+                <group attrs="{'invisible' : [('type_project', '=', 'no_billable')]}">
+                    <group class="oe_subtotal_footer oe_right" name="project_hours">
+                        <field name="remaining_billable_hours" widget="float_time" class="oe_subtotal_footer_separator" readonly="1"/>
+                        <field name="remaining_hours" widget="float_time" class="oe_subtotal_footer_separator" readonly="1"/>
+                    </group>
+                </group>
+            </xpath>
+
+            <xpath expr="//group[@name='project_hours']" position="attributes" >
+                <attribute name="attrs">{'invisible' : [('type_project', '=', 'billable')]}</attribute>
+            </xpath>
+
+            
+<!-- 
+            <xpath expr="//group[@name='project_hours']" position="after">
+                <group class="oe_subtotal_footer oe_right" name="tasks_hours">
+                    <field name="billable_hours" widget="float_time"></field>
+                    <field name="no_billable_hours" widget="float_time"></field>
+                    <field name="effective_hours" class="oe_subtotal_footer_separator" widget="float_time" />      
+                </group>
+            
+                <group class="oe_subtotal_footer oe_right" name="subtasks">
+                    <field name="billable_child_hours" attrs="{'invisible' : [('subtask_effective_hours', '=', 0.0)]}" widget="float_time"></field>
+                    <field name="no_billable_child_hours" attrs="{'invisible' : [('subtask_effective_hours', '=', 0.0)]}" widget="float_time"></field>       
+                    <field name="subtask_effective_hours" widget="float_time" 
+                        attrs="{'invisible' : [('subtask_effective_hours', '=', 0.0)]}" />    
+                </group>
+            
+                <group class="oe_subtotal_footer oe_right" name="project_hours">
+                    
+                    <field name="total_hours_spent oe_right" widget="float_time" class="oe_subtotal_footer_separator" 
+                        attrs="{'invisible' : [('subtask_effective_hours', '=', 0.0)]}" /> 
+                </group>
+
+                <group class="oe_subtotal_footer oe_right" name="project_hours">
+                     <field name="remaining_hours" widget="float_time" class="oe_subtotal_footer_separator" readonly="1"/>
+                </group>
+            </xpath>
+            <xpath expr="//group[@name='project_hours'] oe_right" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath> -->
+
+            <!-- <xpath expr="//field[@name='effective_hours']" position="before">
+                <field name="billable_hours" widget="float_time"></field>
+                <field name="no_billable_hours" widget="float_time"></field>
+            </xpath>
+            <xpath expr="//field[@name='effective_hours']" position="attributes">
+                <attribute name="class">oe_subtotal_footer_separator</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='subtask_effective_hours']" position="before">
+                <separator />
+                <field name="billable_child_hours" attrs="{'invisible' : [('subtask_effective_hours', '=', 0.0)]}" widget="float_time"></field>
+                <field name="no_billable_child_hours" attrs="{'invisible' : [('subtask_effective_hours', '=', 0.0)]}" widget="float_time"></field>
+            </xpath>
+            <xpath expr="//field[@name='subtask_effective_hours']" position="attributes">
+                <attribute name="class">oe_subtotal_footer_separator</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='total_hours_spent']" position="before">
+                <separator />
+                <field name="total_billable_hours_spent" class="oe_subtotal_footer_separator" widget="float_time" 
+                    readonly="1" attrs="{'invisible' : [('subtask_effective_hours', '=', 0.0)]}"></field>
+            </xpath>
+            <xpath expr="//field[@name='remaining_hours']" position="before">
+                <separator />
+                <field name="remaining_billable_hours" class="oe_subtotal_footer_separator" widget="float_time" readonly="1"></field>
+            </xpath> -->
+        </field>
+    </record>
+</odoo>
