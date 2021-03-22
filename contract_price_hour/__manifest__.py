@@ -4,7 +4,7 @@
 {
     'name': 'Contract Price Hour',
     'summary': 'Price for hour in a contract',
-    'version': '11.0.1.0.0',
+    'version': '13.0.1.0.0',
     'author': 'QubiQ, Odoo Community Association (OCA)',
     'license': 'AGPL-3',
     'website': 'https://www.qubiq.es',
