@@ -20,7 +20,6 @@ class ReportHoursConsumption(models.TransientModel):
         comodel_name='project.contract',
         string=_('Project'),
         required=True,
-        ondelete='set null'
     )
     type_hours = fields.Selection(
         string=_('Type of hours'),
@@ -216,7 +215,7 @@ class ReportHoursConsumption(models.TransientModel):
             if kind == 'Bolsa':
                 creation_date = self._format_date(
                     fields.Datetime.from_string(
-                        aal.move_id.invoice_id.date_invoice
+                        aal.move_id.move_id.date
                     )
                 )
             elif kind == 'Tarea':
@@ -238,7 +237,7 @@ class ReportHoursConsumption(models.TransientModel):
             col += 1
             contact = ''
             if kind == 'Bolsa':
-                contact = aal.move_id.invoice_id.partner_id.name or ''
+                contact = aal.move_id.move_id.partner_id.name or ''
             elif kind == 'Tarea':
                 contact = aal.task_id.partner_id.name or ''
             else:
@@ -249,7 +248,7 @@ class ReportHoursConsumption(models.TransientModel):
             col += 1
             origin = ''
             if kind == 'Bolsa':
-                origin = aal.move_id.invoice_id.number or ''
+                origin = aal.move_id.move_id.name or ''
             elif kind == 'Tarea':
                 origin = aal.task_id.name
             else:
@@ -260,7 +259,7 @@ class ReportHoursConsumption(models.TransientModel):
             col += 1
             state = ''
             if kind == 'Bolsa':
-                state = aal.move_id.invoice_id.state or ''
+                state = aal.move_id.move_id.state or ''
             elif kind == 'Tarea':
                 state = aal.task_id.stage_id.name or ''
             else:
@@ -276,12 +275,12 @@ class ReportHoursConsumption(models.TransientModel):
             col += 1
             resource = ''
             if kind == 'Bolsa':
-                if aal.move_id.invoice_id.user_id.employee_ids:
+                if aal.move_id.move_id.user_id.employee_ids:
                     resource =\
-                        aal.move_id.invoice_id.user_id.employee_ids[0].name or ''
+                        aal.move_id.move_id.user_id.employee_ids[0].name or ''
                 else:
                     resource =\
-                        aal.move_id.invoice_id.user_id.name or ''
+                        aal.move_id.move_id.user_id.name or ''
             else:
                 resource = aal.employee_id.name or ''
             ws[col_list[col]+str(line)] = resource
