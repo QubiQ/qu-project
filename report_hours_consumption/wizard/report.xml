@@ -12,6 +12,7 @@
                 <group>
                     <field name="contract_id"/>
                     <field name="type_hours"/>
+                    <field name="show_link" />
                 </group>
                 <separator string="" colspan="4"/>
                 <footer>

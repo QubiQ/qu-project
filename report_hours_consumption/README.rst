@@ -18,7 +18,8 @@ Just install
 Configuration
 =============
 
-Don't need configuration.
+In System->Parameters set the follwing parameters: report_hours.consumption.task_link , report_hours.consumption.ticket_link
+Please keep the TICKET_ID & TASK_ID value for replacement
 
 
 Usage

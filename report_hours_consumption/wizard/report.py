@@ -20,6 +20,7 @@ class ReportHoursConsumption(models.TransientModel):
         comodel_name='project.contract',
         string=_('Project'),
         required=True,
+
     )
     type_hours = fields.Selection(
         string=_('Type of hours'),
@@ -31,6 +32,8 @@ class ReportHoursConsumption(models.TransientModel):
             ('all', 'All')
         ]
     )
+
+    show_link = fields.Boolean(string='Show task link', default=False)
 
     def get_filename(self):
         name = _('Hours Consumption')
@@ -115,6 +118,7 @@ class ReportHoursConsumption(models.TransientModel):
             top=bd,
             bottom=bd
         )
+
         wb.add_named_style(general_style)
         wb.add_named_style(hours_style)
         wb.add_named_style(start_table_style)
@@ -170,6 +174,7 @@ class ReportHoursConsumption(models.TransientModel):
             'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
             'W', 'X', 'Y', 'Z'
         ]
+
         fix_col = 12
         # Save the number of columns we will fill
         col_list = letters_list[:fix_col]
@@ -253,6 +258,10 @@ class ReportHoursConsumption(models.TransientModel):
                 origin = aal.task_id.name
             else:
                 origin = self.get_origin(aal, kind)
+            # Show link:
+            if self.show_link:
+                origin = self._getLink(origin, kind, aal)
+
             ws[col_list[col]+str(line)] = origin
             ws[col_list[col]+str(line)].style = 'general_style'
             # State
@@ -317,7 +326,10 @@ class ReportHoursConsumption(models.TransientModel):
                 billable = 'No'
             ws[col_list[col]+str(line)] = billable
             ws[col_list[col]+str(line)].style = 'general_style'
+
             line += 1
+
+
         ws.row_dimensions[line].height = 30
         ws.row_dimensions[line+2].height = 30
         ws['H'+str(line)] = 'Total'
@@ -336,3 +348,14 @@ class ReportHoursConsumption(models.TransientModel):
         wb.save(output)
         output.seek(0)
         return output.read()
+
+    def _getLink(self,text,kind,aal):
+        link = text
+        if kind == 'Tarea':
+            link = self.env["ir.config_parameter"].sudo().get_param("report_hours.consumption.task_link")
+            link = link.replace('TASK_ID',str(aal.task_id.id))
+        if kind == 'Helpdesk':
+            link = self.env["ir.config_parameter"].sudo().get_param("report_hours.consumption.ticket_link")
+            link = link.replace('TICKET_ID',str(aal.helpdesk_ticket_id.id))
+
+        return  '=HYPERLINK("%s", "%s")' % (link, text)

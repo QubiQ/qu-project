@@ -22,6 +22,7 @@
         "file_download",
     ],
     "data": [
+        "data/parameters.xml",
         "wizard/report.xml",
         "views/product_category.xml"
     ],

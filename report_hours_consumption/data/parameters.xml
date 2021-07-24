@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="rep_hour_task_link" model="ir.config_parameter">
+            <field name="key">report_hours.consumption.task_link</field>
+            <field name="value">https://www.qubiq.es/web#id=TASK_ID&amp;view_type=form&amp;model=project.task&amp;action=195&amp;active_id=160&amp;menu_id=173 </field>
+        </record>
+
+
+        <record id="rep_hour_ticket_link" model="ir.config_parameter">
+            <field name="key">report_hours.consumption.ticket_link</field>
+            <field name="value">https://www.qubiq.es/web#id=TICKET_ID&amp;view_type=form&amp;model=helpdesk.ticket&amp;action=1282&amp;active_id=13&amp;menu_id=963</field>
+        </record>
+
+    </data>
+
+</odoo>
+
