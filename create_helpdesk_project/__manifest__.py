@@ -4,7 +4,7 @@
 {
     "name": "Create Helpdesk Project",
     "summary": "Create a helpdesk from a project",
-    "version": "13.0.1.0.0",
+    "version": "14.0.1.0.0",
     "category": "project",
     "website": "https://www.qubiq.es",
     "author": "QubiQ, Odoo Community Association (OCA)",
@@ -16,6 +16,7 @@
         'helpdesk',
     ],
     "data": [
+        'security/ir.model.access.csv',
         'views/project_project_view.xml',
         'views/helpdesk_stages_view.xml',
         'wizard/create_helpdesk_wizard.xml',

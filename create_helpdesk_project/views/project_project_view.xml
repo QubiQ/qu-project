@@ -8,10 +8,8 @@
 		<field name="model">project.project</field>
 		<field name="inherit_id" ref="project.edit_project"/>
 		<field name="arch" type="xml">
-			<xpath expr="//sheet[1]" position="before">
-				<header>
-					<button name="create_helpdesk_team" string="Create Helpdesk" class="oe_highlight" type="object"/>
-				</header>
+			<xpath expr="//header" position="inside">
+				<button name="create_helpdesk_team" groups="helpdesk.group_helpdesk_user" string="Create Helpdesk" class="oe_highlight" type="object"/>
 			</xpath>
 		</field>
 	</record>
