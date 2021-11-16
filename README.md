@@ -13,6 +13,8 @@ addon | version | summary
 [modify_followers_task](modify_followers_task/) | 14.0.1.0.0 | Allow you to modify followers of a task.
 [project_contracts](project_contracts/) | 14.0.1.0.0 | Contracts for projects
 [contract_price_hour](contract_price_hour/) | 14.0.1.0.0 | Price for hour in a contract
+[report_hours_consumption](report_hours_consumption/) | 14.0.1.0.0 | Report for contracts
+[report_hours_consumption_helpdesk](report_hours_consumption_helpdesk/) | 14.0.1.0.0 | extends the Report Hours Consumption module to consider Helpdesk hours
 
 
 [//]: # (end addons)
