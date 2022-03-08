@@ -278,7 +278,7 @@ class ReportHoursConsumption(models.TransientModel):
             # Register date
             col += 1
             ws[col_list[col]+str(line)] =\
-                self._format_date(fields.Datetime.from_string(aal.create_date))
+                self._format_date(fields.Datetime.from_string(aal.date or aal.create_date))
             ws[col_list[col]+str(line)].style = 'general_style'
             # Resource
             col += 1
