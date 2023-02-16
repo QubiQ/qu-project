@@ -29,6 +29,6 @@
         'security/ir.model.access.csv',
     ],
     'category': 'Project',
-    'installable': True,
+    'installable': False,
     'application': False,
 }

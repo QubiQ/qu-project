@@ -16,6 +16,6 @@
         'views/project_contract_view.xml',
     ],
     'category': 'Project',
-    'installable': True,
+    'installable': False,
     'application': False,
 }
