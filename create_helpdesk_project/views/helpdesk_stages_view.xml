@@ -8,7 +8,7 @@
 		<field name="model">helpdesk.stage</field>
 		<field name="inherit_id" ref="helpdesk.helpdesk_stage_view_tree"/>
 		<field name="arch" type="xml">
-			<xpath expr="//field[@name='is_close']" position="after">
+			<xpath expr="//field[@name='fold']" position="after">
 				<field name="is_stages_project"/>
 			</xpath>
 		</field>
